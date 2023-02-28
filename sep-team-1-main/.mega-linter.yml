@@ -1,0 +1,55 @@
+# Author: Tim-Florian Feulner
+
+# Configuration file for MegaLinter
+# See all available variables at https://oxsecurity.github.io/megalinter/configuration/ and in linters documentation
+
+APPLY_FIXES: none
+SHOW_ELAPSED_TIME: true
+FILEIO_REPORTER: false
+
+DISABLE:
+    - COPYPASTE
+    - SPELL
+DISABLE_LINTERS:
+    - MARKDOWN_MARKDOWN_LINK_CHECK
+    - MARKDOWN_MARKDOWNLINT
+    - REPOSITORY_GITLEAKS
+    - SQL_TSQLLINT
+    - SQL_SQL_LINT
+
+FILTER_REGEX_EXCLUDE: (\.classpath|\.project)
+
+EXCLUDED_DIRECTORIES:
+    - .m2
+    - target
+    - .git
+    - tomcat
+    - class_diagrams
+    - documents
+ADDITIONAL_EXCLUDED_DIRECTORIES:
+    - .m2
+    - target
+    - .git
+    - tomcat
+    - class_diagrams
+    - documents
+
+JAVA_CHECKSTYLE_CONFIG_FILE: cicd/checks/sep_checks.xml
+REPOSITORY_DEVSKIM_DISABLE_ERRORS: true
+REPOSITORY_TRIVY_DISABLE_ERRORS: true
+EDITORCONFIG_EDITORCONFIG_CHECKER_ARGUMENTS:
+    - -disable-indent-size
+EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_EXCLUDE: (bootstrap\.css|.*\.sql)
+YAML_YAMLLINT_CONFIG_FILE: cicd/checks/yamllint.yml
+BASH_SHELLCHECK_ARGUMENTS:
+    - --exclude=SC1091
+DOCKERFILE_HADOLINT_ARGUMENTS:
+    - --ignore
+    - DL3059
+    - --ignore
+    - DL3038
+    - --ignore
+    - DL3040
+    - --ignore
+    - DL3041
+CSS_STYLELINT_CONFIG_FILE: cicd/checks/stylelintrc.json

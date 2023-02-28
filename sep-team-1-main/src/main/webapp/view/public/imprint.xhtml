@@ -1,0 +1,14 @@
+<ui:composition template="/resources/templates/main.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <!-- Please define your page title here -->
+    <ui:define name="title">#{phrases.f_imprint_pageTitle}</ui:define>
+    <ui:define name="content">
+        <!-- Your code begins here. Please insert your code and content into this section -->
+
+        <h:outputFormat escape="false" value="#{imprintBean.settings.imprint}"/>
+
+        <!-- Your code ends here  -->
+    </ui:define>
+</ui:composition>

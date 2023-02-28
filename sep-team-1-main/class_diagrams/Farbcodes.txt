@@ -1,0 +1,37 @@
+Schwarzes-brett.backing
+
+#8B0000 backing_beans
+#8B0A50 dictionary
+#8B3A62 exception
+#8B3A3A lifecycle
+#8B2500 servlet
+#B22222 session
+#FF0000 util
+#CD0000 validator_converter
+
+Schwarzes-brett.business_logic
+
+#8B008B exception
+#9A32CD lifecycle
+#BA55D3 mail
+#D15FEE notification
+#FF00FF periodic
+#FF34B3 services
+
+Schwarzes-brett.data_access
+
+#006400 config
+#CAFF70 dao
+#6E8B3D db
+#3CB371 exception 
+#00FA9A lifecycle
+#6B8E23 periodic
+#7CCD7C transaction
+
+Schwarzes-brett.dto
+
+#1E90FF dto
+
+Schwarzes-brett.logging
+
+#FFB90F

@@ -1,0 +1,172 @@
+<!-- Author: Tim-Florian Feulner -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:comp="jakarta.faces.composite/components"
+                template="/resources/templates/main.xhtml">
+
+    <f:metadata>
+        <f:viewAction action="/view/public/landing" if="#{empty flash.user}"/>
+    </f:metadata>
+
+    <ui:define name="title">
+        <h:outputText value="#{phrases.f_profile_heading}"/>
+    </ui:define>
+    <ui:define name="content">
+        <p:importConstants type="de.schwarzes_brett.dto.Limits" var="limits"/>
+
+        <h:outputText value="#{phrases.f_profile_heading}" styleClass="h2"/>
+
+        <h:panelGrid columns="3" styleClass="m-auto mt-3 align-middle">
+
+            <h:panelGroup>
+                <h:outputText value="#{phrases.f_profile_information_heading}" styleClass="h4 d-block mb-2"/>
+                <h:form id="profile">
+
+                    <h:panelGrid columns="3" styleClass="m-auto mt-3 align-middle">
+
+                        <h:outputLabel value="#{phrases.f_profile_username_label}" for="username" styleClass="p-2 required"/>
+                        <h:inputText id="username" value="#{profileBean.user.credentials.username}"
+                                     required="true" requiredMessage="#{phrases.f_profile_no_username}" styleClass="form-control">
+                            <f:validateLength maximum="#{limits.MEDIUM_TEXT_MAX_LENGTH}"/>
+                            <f:validator validatorId="usernameNotExistsValidator"/>
+                            <f:attribute name="oldUserName" value="#{profileBean.oldUser.credentials.username}"/>
+                        </h:inputText>
+                        <h:message for="username" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_profile_first_name_label}" for="firstName" styleClass="p-2 required"/>
+                        <h:inputText id="firstName" value="#{profileBean.user.firstName}" validatorMessage="#{phrases.f_profile_first_name_too_long}"
+                                     required="true" requiredMessage="#{phrases.f_profile_no_first_name}" styleClass="form-control">
+                            <f:validateLength maximum="#{limits.EXTRA_SHORT_PLUS_TEXT_LENGTH}"/>
+                        </h:inputText>
+                        <h:message for="firstName" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_profile_last_name_label}" for="lastName" styleClass="p-2 required"/>
+                        <h:inputText id="lastName" value="#{profileBean.user.lastName}" validatorMessage="#{phrases.f_profile_last_name_too_long}"
+                                     required="true" requiredMessage="#{phrases.f_profile_no_last_name}" styleClass="form-control">
+                            <f:validateLength maximum="#{limits.EXTRA_SHORT_PLUS_TEXT_LENGTH}"/>
+                        </h:inputText>
+                        <h:message for="lastName" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_profile_street_label}" for="street" styleClass="p-2 required"/>
+                        <h:inputText id="street" value="#{profileBean.user.street}" validatorMessage="#{phrases.f_profile_street_too_long}"
+                                     required="true" requiredMessage="#{phrases.f_profile_no_street}" styleClass="form-control">
+                            <f:validateLength maximum="#{limits.SHORT_PLUS_TEXT_LENGTH}"/>
+                        </h:inputText>
+                        <h:message for="street" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_profile_street_number_label}" for="streetNumber" styleClass="p-2 required"/>
+                        <h:inputText id="streetNumber" value="#{profileBean.user.streetNumber}"
+                                     required="true" requiredMessage="#{phrases.f_profile_no_street_number}"
+                                     validatorMessage="#{phrases.f_profile_street_number_too_long}" styleClass="form-control">
+                            <f:validateLength maximum="#{limits.EXTRA_SHORT_TEXT_LENGTH}"/>
+                        </h:inputText>
+                        <h:message for="streetNumber" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_profile_address_addition_label}" for="addressAddition" styleClass="p-2"/>
+                        <h:inputText id="addressAddition" value="#{profileBean.user.addressAddition}"
+                                     validatorMessage="#{phrases.f_profile_address_addition_too_long}" styleClass="form-control">
+                            <f:validateLength maximum="#{limits.EXTRA_SHORT_TEXT_LENGTH}"/>
+                        </h:inputText>
+                        <h:message for="addressAddition" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_profile_postal_code_label}" for="postalCode" styleClass="p-2 required"/>
+                        <h:inputText id="postalCode" value="#{profileBean.user.postalCode}"
+                                     validatorMessage="#{phrases.f_profile_postal_code_too_long}"
+                                     required="true" requiredMessage="#{phrases.f_profile_no_postal_code}" styleClass="form-control">
+                            <f:validateLength maximum="#{limits.EXTRA_SHORT_TEXT_LENGTH}"/>
+                        </h:inputText>
+                        <h:message for="postalCode" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_profile_city_label}" for="city" styleClass="p-2 required"/>
+                        <h:inputText id="city" value="#{profileBean.user.city}" validatorMessage="#{phrases.f_profile_city_too_long}"
+                                     required="true" requiredMessage="#{phrases.f_profile_no_city}" styleClass="form-control">
+                            <f:validateLength maximum="#{limits.SHORT_PLUS_TEXT_LENGTH}"/>
+                        </h:inputText>
+                        <h:message for="city" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_profile_country_label}" for="country" styleClass="p-2 required"/>
+                        <h:inputText id="country" value="#{profileBean.user.country}" validatorMessage="#{phrases.f_profile_country_too_long}"
+                                     required="true" requiredMessage="#{phrases.f_profile_no_country}" styleClass="form-control">
+                            <f:validateLength maximum="#{limits.EXTRA_SHORT_PLUS_TEXT_LENGTH}"/>
+                        </h:inputText>
+                        <h:message for="country" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_profile_email_label}" for="email" styleClass="p-2 required"/>
+                        <h:inputText id="email" value="#{profileBean.user.email}"
+                                     required="true" requiredMessage="#{phrases.f_profile_no_email}" styleClass="form-control">
+                            <f:validateLength maximum="#{limits.SHORT_TEXT_MAX_LENGTH}"/>
+                            <f:validator validatorId="emailSyntaxValidator"/>
+                            <f:validator validatorId="emailUniqueValidator"/>
+                            <f:attribute name="oldEmail" value="#{profileBean.oldUser.email}"/>
+                        </h:inputText>
+                        <h:message for="email" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_profile_phone_number_label}" for="phoneNumber" styleClass="p-2"/>
+                        <h:inputText id="phoneNumber" value="#{profileBean.user.phone}" validatorMessage="#{phrases.f_profile_phone_number_too_long}"
+                                     styleClass="form-control">
+                            <f:validateLength maximum="#{limits.EXTRA_SHORT_TEXT_LENGTH}"/>
+                        </h:inputText>
+                        <h:message for="phoneNumber" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_profile_role_label}" for="role"
+                                       rendered="#{userSession.admin and profileBean.notDefaultAdminProfile}"
+                                       styleClass="p-2 required"/>
+                        <h:selectOneMenu id="role" value="#{profileBean.user.role}" required="true"
+                                         rendered="#{userSession.admin and profileBean.notDefaultAdminProfile}"
+                                         styleClass="form-control">
+                            <f:selectItems value="#{profileBean.roleList}" var="userRole"
+                                           itemValue="#{userRole}" itemLabel="#{phrases['f_profile_role_' += userRole.name().toLowerCase()]}"/>
+                        </h:selectOneMenu>
+                        <h:message for="role" styleClass="ui-message-error" rendered="#{userSession.admin and profileBean.notDefaultAdminProfile}"/>
+
+                    </h:panelGrid>
+
+                    <h:commandButton id="saveButton" value="#{phrases.f_profile_save_button}" action="#{profileBean.save()}"
+                                     styleClass="btn btn-primary mt-3"/>
+
+                </h:form>
+            </h:panelGroup>
+
+            <h:outputText styleClass="m-5"/>
+
+            <h:panelGroup>
+                <h:outputText value="#{phrases.f_profile_password_heading}" styleClass="h4 d-block mb-2"/>
+                <h:form id="passwordChange_form">
+                    <h:commandLink id="passwordChange" value="#{phrases.f_profile_password_change_label}"
+                                   action="#{profileBean.changePassword()}" styleClass="btn btn-primary"/>
+                </h:form>
+
+                <h:outputText value="#{phrases.f_profile_avatar_heading}" styleClass="h4 d-block mt-5 mb-2"/>
+                <comp:imageUpload imageCount="1" holderBean="#{profileBean}"/>
+
+                <!-- Profile deletion dialog -->
+                <h:outputText value="#{phrases.f_profile_danger_zone_heading}" styleClass="h4 d-block mt-5 mb-2"
+                              rendered="#{profileBean.notDefaultAdminProfile}"/>
+                <h:button id="deleteProfile_popup_button"
+                          value="#{phrases.f_profile_deletion_label}"
+                          onclick="PF('deletion-dialog').show(); return false;"
+                          styleClass="btn btn-secondary"
+                          rendered="#{profileBean.notDefaultAdminProfile}"/>
+                <p:dialog header="#{phrases.f_profile_deletion_dialog_header}" widgetVar="deletion-dialog" modal="true" draggable="false"
+                          resizable="false">
+                    <h:outputText value="#{phrases.f_profile_deletion_dialog_body}"/>
+                    <h:panelGroup>
+                        <h:form id="deleteProfile_form">
+                            <h:commandButton id="deleteProfile_button"
+                                             value="#{phrases.f_profile_deletion_dialog_confirm}" action="#{profileBean.deleteProfile()}"
+                                             styleClass="btn btn-secondary m-2" rendered="#{profileBean.notDefaultAdminProfile}"/>
+                        </h:form>
+                        <h:button id="acceptDeletion"
+                                  value="#{phrases.f_profile_deletion_dialog_abort}" onclick="PF('deletion-dialog').hide(); return false;"
+                                  styleClass="btn btn-primary"/>
+                    </h:panelGroup>
+                </p:dialog>
+            </h:panelGroup>
+        </h:panelGrid>
+
+    </ui:define>
+</ui:composition>

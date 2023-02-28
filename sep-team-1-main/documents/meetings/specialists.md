@@ -1,0 +1,35 @@
+# Spezialisten
+
+- Tim
+    - LaTeX
+    - CI/CD
+    - Contexts and Dependency Injection (CDI)
+    - Config Datei (für DB, SMTP, PLZ-Search)
+    - Upload Bilder
+    - Validator/ Converter
+    - SSL, Zertifikate, HTTPS
+    - Logging
+- Valentin
+    - GUI Design
+    - Bootstrap
+    - Klassendiagramme (RSA)
+    - CSS
+- Michael
+    - Jakarta Mail, E-Mail Verifizierung
+    - Selenium (mit Kilian)
+    - Sequenzdiagramme (Visual Paradigm)
+    - Pagination, Listenanzeige (Facelets Tag, composite component)
+- Kilian
+    - Selenium (mit Michael)
+    - Paketdiagramme
+    - Kategorien: Abspeicherung, Laden von DB, Darstellung, Breadcrumb-Navigation
+    - Mehrsprachigkeit, Resourcebundle
+- Daniel
+    - Security
+    - Facelets-Sprache
+    - Parameterübergabe
+    - Bookmarks (UUID)
+- Jonas
+    - ER-Diagramme (Visual Paradigm)
+    - Datenbank, Connection Pool, SQL
+    - BLOBs (+ Wie Backup?)

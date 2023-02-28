@@ -1,0 +1,58 @@
+<!-- Autor: Michael Grüner-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:comp="jakarta.faces.composite/components">
+
+<f:view>
+    <ui:composition template="/resources/templates/main.xhtml">
+        <ui:define name="title">#{phrases.f_landing_title}</ui:define>
+        <ui:define name="content">
+
+            <h:form id="landing_form">
+                <h:panelGrid id="landing_panelGrid" columns="2" styleClass="container">
+                    <comp:categoryNavigation id="landing_categoryNavigation" showBreadcrumb="true" backingBean="#{landingBean}"/>
+
+                    <!-- Pagination -->
+                    <comp:pagination id="landing_pagination" backingBean="#{landingBean}" adPagination="true">
+
+                        <!-- Column for the thumbnail of the ad -->
+                        <h:column scope="col">
+                            <h:graphicImage value="#{landingBean.generateThumbnailId(element.thumbnail)}" alt="thumbail" styleClass="thumbnail"/>
+                        </h:column>
+
+                        <!-- Column for the title of the ad -->
+                        <h:column scope="col">
+                            <f:facet name="header">
+                                <comp:sortableHeader title="#{phrases.f_landing_title_header}"
+                                                     sortBy="#{phrases.header_name_title}"
+                                                     backingBean="#{landingBean}"/>
+                            </f:facet>
+                            <h:link value="#{element.title}" outcome="/view/public/ad">
+                                <f:param name="id" value="#{element.id}"/>
+                            </h:link>
+                        </h:column>
+
+                        <!-- Column for the price of the ad -->
+                        <h:column scope="col">
+                            <f:facet name="header">
+                                <comp:sortableHeader title="#{phrases.f_landing_price_header}"
+                                                     sortBy="#{phrases.header_name_price}"
+                                                     backingBean="#{landingBean}"/>
+                            </f:facet>
+                            <h:outputText
+                                    value="#{element.price}">
+                                <f:converter converterId="priceConverter"/>
+                            </h:outputText>
+                        </h:column>
+
+                    </comp:pagination>
+                    <!-- End Pagination -->
+                </h:panelGrid>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</f:view>
+</html>

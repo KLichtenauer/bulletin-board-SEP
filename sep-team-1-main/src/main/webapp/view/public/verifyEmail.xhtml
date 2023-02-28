@@ -1,0 +1,20 @@
+<!--Author: Lipp Daniel-->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/resources/templates/main.xhtml">
+
+    <f:metadata>
+        <f:viewParam id="token_param" name="token" value="#{verifyEmailBean.token.token}"/>
+        <f:viewParam id="user_param" name="username" value="#{verifyEmailBean.token.username}"/>
+        <f:viewAction id="verify_action" action="#{verifyEmailBean.processToken()}"/>
+    </f:metadata>
+
+    <ui:define name="title">#{phrases.f_verifyEmail_titel}</ui:define>
+    <ui:define name="content">
+        <h:outputLabel value="#{phrases.f_verifyEmail_success}" rendered="#{verifyEmailBean.success}"/>
+        <h:outputLabel value="#{phrases.f_verifyEmail_failure}" rendered="#{!verifyEmailBean.success}"/>
+    </ui:define>
+</ui:composition>

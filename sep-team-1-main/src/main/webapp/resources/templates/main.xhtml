@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Autor: Valentin Damjantschitsch -->
+
+<!DOCTYPE html>
+<html lang="de"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets">
+
+<h:head>
+    <title><ui:insert name="title"/></title>
+
+    <!-- Stylesheets -->
+    <h:outputStylesheet name="css/bootstrap.css"/>
+    <h:outputStylesheet name="css/style.css"/>
+    <h:outputStylesheet name="css/CustomStyles/#{headerBean.settings.getStyleSheet()}"/>
+</h:head>
+
+<h:body id="main">
+    <header>
+        <ui:include id="header" src="/resources/templates/header.xhtml"/>
+
+
+    </header>
+
+    <main>
+        <h:messages id="messages" globalOnly="true" styleClass="messages h3"/>
+        <ui:insert name="content" id="content"/>
+
+
+    </main>
+    <footer>
+        <ui:include id="footer" src="/resources/templates/footer.xhtml"/>
+    </footer>
+
+    <!-- Help Button -->
+
+
+</h:body>
+
+</html>

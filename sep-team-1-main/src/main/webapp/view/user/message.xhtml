@@ -1,0 +1,62 @@
+<ui:composition template="/resources/templates/main.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:metadata>
+        <f:viewAction action="/view/public/landing" if="#{empty flash.message}"/>
+        <f:viewParam name="id" value="#{messageBean.message.ad.id}"/>
+    </f:metadata>
+    <!-- Please define your page title here -->
+    <ui:define name="title">#{phrases.f_message_pageTitle}</ui:define>
+    <ui:define name="content">
+        <!-- Your code begins here. Please insert your code and content into this section -->
+        <p:importConstants type="de.schwarzes_brett.dto.Limits" var="limits"/>
+
+        <h:panelGrid id="message" styleClass="d-flex justify-content-center text-center">
+
+            <h:form id="message_form">
+                <!-- Message content -->
+                <h:panelGrid styleClass="form-group">
+                    <h:outputLabel id="message_title"
+                                   value="#{phrases.f_message_yourMessageTo} #{messageBean.message.receiver.firstName} #{phrases.f_message_aboutAd}
+                                   #{messageBean.message.ad.title}"
+                                   for="message_content" styleClass="h4 form-check-label p-2"/>
+                    <h:inputTextarea id="message_content" value="#{messageBean.message.content}" required="true"
+                                     requiredMessage="#{phrases.f_message_required}" styleClass="form-control">
+                        <f:validateLength maximum="#{limits.MEDIUM_TEXT_MAX_LENGTH}"/>
+                    </h:inputTextarea>
+                    <h:message for="message_content" styleClass="ui-message-error"/>
+                </h:panelGrid>
+
+                <h:panelGrid columns="3" styleClass="row">
+                    <!-- Message is public -->
+                    <h:panelGrid scope="col">
+                        <h:outputLabel id="message_publicLabel" value="#{phrases.f_message_publicLabel}" for="message_public"
+                                       styleClass="h6 form-check-label p-2"/>
+                        <h:selectBooleanCheckbox id="message_public" value="#{messageBean.message.sharedPublic}" styleClass="form-check-input p-2"/>
+                    </h:panelGrid>
+
+                    <!-- Message is anonymous -->
+                    <h:panelGrid scope="col">
+                        <h:outputLabel id="message_anonymousLabel" value="#{phrases.f_message_anonymousLabel}" for="message_anonymous"
+                                       styleClass="h6 form-check-label p-2"/>
+                        <h:selectBooleanCheckbox id="message_anonymous" value="#{messageBean.message.anonymous}" styleClass="form-check-input p-2"/>
+                    </h:panelGrid>
+
+                    <!-- Message send button -->
+                    <h:panelGrid scope="col">
+                        <h:commandButton id="message_sendButton" action="#{messageBean.sendMessage()}" value="#{phrases.f_message_sendButton}"
+                                         styleClass="btn btn-secondary"/>
+                    </h:panelGrid>
+
+                </h:panelGrid>
+
+            </h:form>
+
+        </h:panelGrid>
+
+        <!-- Your code ends here  -->
+    </ui:define>
+</ui:composition>

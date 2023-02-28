@@ -1,0 +1,172 @@
+<!-- Author: Daniel Lipp -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:comp="jakarta.faces.composite/components"
+                template="/resources/templates/main.xhtml">
+    <ui:define name="title">#{phrases.f_editAd_pageName}</ui:define>
+    <ui:define name="content">
+        <p:importConstants type="de.schwarzes_brett.dto.Limits" var="limits"/>
+        <p:importConstants type="de.schwarzes_brett.dto.Currency" var="currencys"/>
+
+        <h:panelGrid columns="1" styleClass="m-auto mt-3 align-middle">
+
+            <!--Delete Ad button and dialog-->
+            <h:button id="delete" value="#{phrases.f_editAd_delete_button}" onclick="PF('deletion-dialog').show(); return false;"
+                      styleClass="btn btn-secondary" rendered="#{!editAdBean.newAd}"/>
+            <p:dialog header="#{phrases.f_editAd_deletion_dialog_header}" widgetVar="deletion-dialog" modal="true" draggable="false"
+                      resizable="false">
+                <h:outputText value="#{phrases.f_editAd_deletion_dialog_body}"/>
+                <h:panelGroup>
+                    <h:form id="confirmDelete">
+                        <h:commandButton id="confirm" value="#{phrases.f_editAd_deletion_dialog_confirm}" action="#{editAdBean.delete()}"
+                                         styleClass="btn btn-secondary m-2" rendered="#{!editAdBean.newAd}"/>
+                    </h:form>
+                    <h:button value="#{phrases.f_editAd_deletion_dialog_abort}" onclick="PF('deletion-dialog').hide(); return false;"
+                              styleClass="btn btn-primary"/>
+                </h:panelGroup>
+            </p:dialog>
+
+
+            <!-- Eingabedaten -->
+            <h:panelGrid columns="3" styleClass="m-auto mt-3 align-middle">
+
+                <h:form id="editAdForm">
+                    <h:panelGrid columns="3">
+                        <h:outputLabel value="#{phrases.f_editAd_username_label}" rendered="#{editAdBean.session.admin}" styleClass="required"/>
+                        <h:inputText id="username" value="#{editAdBean.ad.creator.credentials.username}" rendered="#{editAdBean.session.admin}"
+                                     required="true" styleClass="form-control">
+                            <f:validator validatorId="usernameExistsValidator"/>
+                        </h:inputText>
+                        <h:message for="username" styleClass="ui-message-error" rendered="#{editAdBean.session.admin}"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_title_label}" styleClass="required"/>
+                        <h:inputText id="title" value="#{editAdBean.ad.title}" required="true"
+                                     requiredMessage="#{phrases.f_editAd_required_msg_title}" styleClass="form-control">
+                            <f:validateLength maximum="#{limits.MEDIUM_TEXT_MAX_LENGTH}"/>
+                        </h:inputText>
+                        <h:message for="title" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_description_label}"/>
+                        <h:inputTextarea id="description" value="#{editAdBean.ad.description}" rows="5" cols="45" styleClass="form-control">
+                            <f:validateLength maximum="#{limits.HUGE_TEXT_MAX_LENGTH}"/>
+                        </h:inputTextarea>
+                        <h:message for="description" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_categorySelected_label}"/>
+                        <h:inputText value="#{editAdBean.ad.category.name}" disabled="true" readonly="true" styleClass="form-control"/>
+                        <h:message for="navigator" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_price_selectVB_label}"/>
+                        <h:selectBooleanCheckbox id="priceVBSelection" value="#{editAdBean.ad.price.basisOfNegotiation}"/>
+                        <h:message for="priceVBSelection" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_price_input_label}"/>
+                        <h:inputText id="price" value="#{editAdBean.price}" styleClass="form-control">
+                            <f:validator validatorId="priceValidator"/>
+                            <f:converter converterId="priceValueConverter"/>
+                        </h:inputText>
+                        <h:message for="price" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_currency_label}" styleClass="required"/>
+                        <h:selectOneMenu id="currency" value="#{editAdBean.ad.price.currency}" required="true"
+                                         requiredMessage="#{phrases.f_editAd_required_msg_currency}" styleClass="form-control">
+                            <f:selectItems value="#{editAdBean.currencyList}"/>
+                        </h:selectOneMenu>
+                        <h:message for="currency" styleClass="ui-message-error"/>
+
+                        <h:outputLabel id="releaseLabel" value="#{phrases.f_editAd_releaseDate_label}" styleClass="required"/>
+                        <p:datePicker id="releaseDate" value="#{editAdBean.release}"
+                                      pattern="#{phrases.f_editAd_datePattern}"
+                                      required="true"
+                                      requiredMessage="#{phrases.f_editAd_required_msg_release}"/>
+                        <h:message for="releaseDate" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_endDate_label}"/>
+                        <p:datePicker id="endDate" value="#{editAdBean.end}" pattern="#{phrases.f_editAd_datePattern}"/>
+                        <h:message for="endDate" styleClass="ui-message-error"/>
+
+
+                        <h:outputLabel value="#{phrases.f_editAd_thumbnail_label}" rendered="#{editAdBean.ad.images.size()>0}"
+                                       styleClass="required"/>
+                        <h:selectOneRadio id="thumbnail" value="#{editAdBean.thumbnail}" rendered="#{editAdBean.ad.images.size()>0}"
+                                          required="true" styleClass="form-control">
+                            <f:selectItems value="#{editAdBean.radioSelection}"/>
+                        </h:selectOneRadio>
+                        <h:message for="thumbnail" styleClass="message" rendered="#{editAdBean.ad.images.size()>0}"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_email_label}" styleClass="required"/>
+                        <h:inputText id="email" value="#{editAdBean.ad.publicData.email}" required="true" styleClass="form-control">
+                            <f:validator validatorId="emailSyntaxValidator"/>
+                        </h:inputText>
+                        <h:message for="email" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_phone_label}"/>
+                        <h:inputText id="phone" value="#{editAdBean.ad.publicData.phone}" styleClass="form-control">
+                            <f:validator validatorId="phoneNumberSyntaxValidator"/>
+                        </h:inputText>
+                        <h:message for="phone" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_fName_label}"/>
+                        <h:inputText id="fname" value="#{editAdBean.ad.publicData.firstName}" styleClass="form-control"/>
+                        <h:message for="fname" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_lName_label}"/>
+                        <h:inputText id="lname" value="#{editAdBean.ad.publicData.lastName}" styleClass="form-control"/>
+                        <h:message for="lname" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_country_label}" styleClass="required"/>
+                        <h:inputText id="country" value="#{editAdBean.ad.publicData.country}" required="true" styleClass="form-control"/>
+                        <h:message for="country" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_city_label}" styleClass="required"/>
+                        <h:inputText id="city" value="#{editAdBean.ad.publicData.city}" required="true" styleClass="form-control"/>
+                        <h:message for="city" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_zipCode_label}" styleClass="required"/>
+                        <h:inputText id="pcode" value="#{editAdBean.ad.publicData.postalCode}" required="true" styleClass="form-control"/>
+                        <h:message for="pcode" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_street_label}"/>
+                        <h:inputText id="street" value="#{editAdBean.ad.publicData.street}" styleClass="form-control"/>
+                        <h:message for="street" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_sNumber_label}"/>
+                        <h:inputText id="snumber" value="#{editAdBean.ad.publicData.streetNumber}" styleClass="form-control"/>
+                        <h:message for="snumber" styleClass="ui-message-error"/>
+
+                        <h:outputLabel value="#{phrases.f_editAd_aAddition_label}"/>
+                        <h:inputText id="aAddition" value="#{editAdBean.ad.publicData.addressAddition}" styleClass="form-control"/>
+                        <h:message for="aAddition" styleClass="ui-message-error"/>
+
+                        <!-- Buttons -->
+                        <h:outputLabel/>
+                        <h:commandButton id="save" value="#{phrases.f_editAd_save_button}" action="#{editAdBean.save()}"
+                                         styleClass="btn btn-secondary" style="margin-top: 30px"/>
+                        <h:outputLabel/>
+                    </h:panelGrid>
+                </h:form>
+
+                <h:outputText styleClass="m-5"/>
+
+                <h:form id="categoryNavigation">
+                    <comp:categoryNavigation id="navigator" showBreadcrumb="false" backingBean="#{editAdBean}"/>
+                </h:form>
+
+            </h:panelGrid>
+
+            <!-- Bilder -->
+            <h:panelGrid columns="1" styleClass="m-auto mt-3 align-middle">
+                <h:outputLabel value="#{phrases.f_editAd_images_label}"/>
+                <h:outputLabel value="#{phrases.f_editAd_images_warning}" rendered="#{!editAdBean.newAd}" style="margin-bottom: 10px"/>
+                <comp:imageUpload id="imageUpload" imageCount="#{editAdBean.imageCount}" holderBean="#{editAdBean}"/>
+                <h:message for="imageUpload" styleClass="ui-message-error"/>
+            </h:panelGrid>
+        </h:panelGrid>
+
+
+    </ui:define>
+</ui:composition>

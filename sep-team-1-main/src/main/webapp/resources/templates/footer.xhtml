@@ -1,0 +1,50 @@
+<!-- Autor: Valentin Damjantschitsch -->
+<ui:composition
+        xmlns:h="jakarta.faces.html"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="http://java.sun.com/jsf/core">
+
+    <!-- Container for grid -->
+    <h:panelGroup styleClass="container d-flex justify-content-between align-items-center">
+
+        <h:panelGroup styleClass="col">
+
+            <!-- Name of owner -->
+            <h:outputText id="footer_owner" styleClass="h4" value="#{footerBean.settings.name}"/><br/>
+
+            <!-- Description of owner -->
+            <h:outputText id="footer_description" styleClass="p" value="#{footerBean.settings.description}"/>
+
+        </h:panelGroup>
+        <!-- End of Grid column 1: Owner Information  -->
+
+        <!-- Grid column 2: Helpful Links  -->
+        <h:panelGroup styleClass="col">
+
+            <!-- Headline Links -->
+            <h:outputText styleClass="h4" value="#{phrases.f_footer_helpFullLinks}"/><br/>
+
+            <!-- Links -->
+            <h:link id="footer_imprint" styleClass="a" value="#{phrases.f_footer_imprint}" outcome="/view/public/imprint"/><br/>
+            <h:link id="footer_privacy" styleClass="a" value="#{phrases.f_footer_privacy}" outcome="/view/public/privacy"/><br/>
+
+        </h:panelGroup>
+        <!-- End of Grid column 2: Helpful Links -->
+
+        <!-- Grid column 3: Owner contact  -->
+        <h:panelGroup styleClass="col">
+
+            <!-- Contact Information -->
+            <h:outputText styleClass="h4" value="#{phrases.f_footer_contactHeader}"/><br/>
+            <h:outputText styleClass="p" value="#{footerBean.settings.name}"/><br/>
+            <h:outputLink value="mailto:#{footerBean.settings.contact}">
+                <f:param name="subject" value="#{phrases.f_footer_subjectMailTo}"/>
+                <h:outputText styleClass="a" value="#{footerBean.settings.contact}"/>
+            </h:outputLink>
+
+        </h:panelGroup>
+        <!-- End of Grid column 3: Owner contact  -->
+
+    </h:panelGroup>
+
+</ui:composition>

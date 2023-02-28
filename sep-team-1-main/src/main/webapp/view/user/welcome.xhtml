@@ -1,0 +1,66 @@
+<!-- Author: Jonas Elsper -->
+<ui:composition template="/resources/templates/main.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:comp="jakarta.faces.composite/components">
+    <f:metadata>
+        <f:importConstants type="de.schwarzes_brett.backing.backing_beans.WelcomeBean.AdSelection" var="selection"/>
+    </f:metadata>
+    <!-- Please define your page title here -->
+    <ui:define name="title">#{phrases.f_welcome_pageName}</ui:define>
+    <ui:define name="content">
+        <!-- Buttons to change the ad selection -->
+        <h:form id="welcome_subscribedForm">
+            <h:commandButton id="welcome_subscribedButton" action="#{welcomeBean.changeSelection(selection.SUBSCRIBED)}"
+                             value="#{phrases.f_welcome_selection_subscribed}" styleClass="btn btn-secondary"/>
+        </h:form>
+        <h:form id="welcome_ownForm">
+            <h:commandButton id="welcome_ownButton" action="#{welcomeBean.changeSelection(selection.OWN)}"
+                             value="#{phrases.f_welcome_selection_own}" styleClass="btn btn-secondary"/>
+        </h:form>
+        <h:form id="welcome_commentedForm">
+            <h:commandButton id="welcome_commentedButton" action="#{welcomeBean.changeSelection(selection.COMMENTED)}"
+                             value="#{phrases.f_welcome_selection_commented}" styleClass="btn btn-secondary"/>
+        </h:form>
+        <!-- Pagination -->
+        <h:form id="welcome_paginationForm">
+            <comp:pagination id="welcome_pagination" backingBean="#{welcomeBean}" adPagination="true">
+
+                <!-- Column for the thumbnail of the ad -->
+                <h:column scope="col">
+                    <h:graphicImage value="#{welcomeBean.getGenerateThumbnailId(element.thumbnail)}" styleClass="thumbnail" alt="thumbnail"/>
+                </h:column>
+
+                <!-- Column for the title of the ad -->
+                <h:column scope="col">
+                    <f:facet name="header">
+                        <comp:sortableHeader title="#{phrases.f_welcome_title_header}"
+                                             sortBy="#{phrases.header_name_title}"
+                                             backingBean="#{welcomeBean}"/>
+                    </f:facet>
+                    <h:link value="#{element.title}" outcome="/view/public/ad" styleClass="">
+                        <f:param name="id" value="#{element.id}"/>
+                    </h:link>
+                </h:column>
+
+                <!-- Column for the price of the ad -->
+                <h:column scope="col">
+                    <f:facet name="header">
+                        <comp:sortableHeader title="#{phrases.f_welcome_price_header}"
+                                             sortBy="#{phrases.header_name_price}"
+                                             backingBean="#{welcomeBean}"/>
+                    </f:facet>
+                    <h:outputText
+                            value="#{element.price}">
+                        <f:converter converterId="priceConverter"/>
+                    </h:outputText>
+                </h:column>
+
+            </comp:pagination>
+        </h:form>
+        <!-- End Pagination -->
+    </ui:define>
+</ui:composition>
+

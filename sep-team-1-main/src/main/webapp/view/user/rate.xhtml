@@ -1,0 +1,45 @@
+<!-- Author: michaelgruner -->
+<ui:composition template="/resources/templates/main.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:p="http://primefaces.org/ui">
+    <!-- Please define your page title here -->
+    <ui:define name="title">#{phrases.f_rate_title} #{rateBean.rating.rated.credentials.username}</ui:define>
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewAction action="/view/public/landing" if="#{empty flash.rating}"/>
+        </f:metadata>
+        <h:form id="rate_form">
+            <h:panelGrid columns="1" styleClass="m-auto mt-3 mb-3 align-middle">
+                <!-- Username -->
+                <h:outputText id="rate_username"
+                              value="#{phrases.f_rate_title} #{rateBean.rating.rated.credentials.username}:"
+                              styleClass="h2"/>
+
+                <h:outputText id="rate_info" value="#{phrases.f_rate_info}"/>
+
+                <!-- RadioButtons -->
+                <p:selectOneRadio value="#{rateBean.rating.rating}"
+                                  id="rate_radioButtons">
+                    <f:selectItems value="#{rateBean.selectItems}"/>
+                </p:selectOneRadio>
+
+                <!-- submitButton -->
+                <h:commandButton id="rate_submitButton"
+                                 value="#{phrases.f_rate_submitButton}"
+                                 action="#{rateBean.submit()}"
+                                 styleClass="btn btn-primary"/>
+
+                <!-- deleteButton -->
+                <h:commandButton id="rate_deleteButton"
+                                 value="#{phrases.f_rate_deleteButton}"
+                                 action="#{rateBean.deleteRating()}"
+                                 styleClass="btn btn-secondary"
+                                 rendered="#{rateBean.existingRating}"/>
+            </h:panelGrid>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

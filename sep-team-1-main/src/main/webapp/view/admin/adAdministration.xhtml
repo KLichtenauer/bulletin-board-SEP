@@ -1,0 +1,63 @@
+<!-- Autor: Valentin Damjantschitsch -->
+
+<ui:composition template="/resources/templates/main.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:comp="jakarta.faces.composite/components">
+    <!-- Please define your page title here -->
+    <ui:define name="title">#{phrases.f_adAdministration_pageTitle}</ui:define>
+    <ui:define name="content">
+        <!-- Your code begins here. Please insert your code and content into this section -->
+        <h:form>
+            <h:panelGrid id="adAdministration" columns="2" styleClass="container">
+                <comp:categoryNavigation id="adAdministration_categoryNavigation" showBreadcrumb="true" backingBean="#{adAdministrationBean}"/>
+
+                <!-- Pagination -->
+                <comp:pagination backingBean="#{adAdministrationBean}" adPagination="true">
+
+                    <!-- Column for the thumbnail of the ad -->
+                    <h:column scope="col">
+                        <h:graphicImage value="#{adAdministrationBean.generateThumbnailId(element.thumbnail)}" styleClass="thumbnail"
+                                        alt="thumbnail"/>
+                    </h:column>
+
+                    <!-- Column for the title of the ad -->
+                    <h:column scope="col">
+                        <f:facet name="header">
+                            <comp:sortableHeader title="#{phrases.f_landing_title_header}"
+                                                 sortBy="#{phrases.header_name_title}"
+                                                 backingBean="#{adAdministrationBean}"/>
+                        </f:facet>
+                        <h:link value="#{element.title}" outcome="/view/public/ad">
+                            <f:param name="id" value="#{element.id}"/>
+                        </h:link>
+                    </h:column>
+
+                    <!-- Column for the price of the ad -->
+                    <h:column scope="col">
+                        <f:facet name="header">
+                            <comp:sortableHeader title="#{phrases.f_landing_price_header}"
+                                                 sortBy="#{phrases.header_name_price}"
+                                                 backingBean="#{adAdministrationBean}"/>
+                        </f:facet>
+                        <h:outputText
+                                value="#{element.price}">
+                            <f:converter converterId="priceConverter"/>
+                        </h:outputText>
+                    </h:column>
+
+                    <!-- Column for edit ad button -->
+                    <h:column scope="col">
+                        <h:commandButton id="adAdministration_editButton" value="#{phrases.f_adAdministration_editButton}"
+                                         action="#{adAdministrationBean.editAd(element)}" styleClass="btn btn-primary"/>
+                    </h:column>
+
+                </comp:pagination>
+                <!-- End Pagination -->
+            </h:panelGrid>
+        </h:form>
+        <!-- Your code ends here  -->
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,71 @@
+<!-- Author: Tim-Florian Feulner -->
+
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:ui="jakarta.faces.facelets"
+              xmlns:f="jakarta.faces.core"
+              xmlns:h="jakarta.faces.html"
+              xmlns:cc="jakarta.faces.composite">
+
+    <cc:interface>
+        <cc:attribute name="imageCount" required="true"/>
+        <cc:attribute name="holderBean" type="de.schwarzes_brett.backing.backing_beans.ImageUploadHolder" required="true"/>
+    </cc:interface>
+
+    <cc:implementation>
+
+        <!-- Upload input elements -->
+        <h:form id="imageUploadForm" enctype="multipart/form-data"
+                rendered="#{cc.attrs.imageCount gt cc.attrs.holderBean.imageUploadBean.images.size()}">
+            <script>
+                function updateSelectedFilename() {
+                    let uploadElement = document.querySelectorAll('[id*="fileSelectInput"]')[0];
+                    let filenameElement = document.querySelectorAll('[id*="selectInputCustomFilename"]')[0];
+                    filenameElement.innerHTML = uploadElement.value.split('/').pop().split('\\').pop();
+                }
+            </script>
+
+            <h:outputLabel id="selectInputCustomButton" value="#{phrases.f_image_upload_button}" for="fileSelectInput" styleClass="btn btn-primary"/>
+            <h:outputText id="selectInputCustomFilename" value=" " styleClass="p-2"/>
+            <h:inputFile id="fileSelectInput" value="#{cc.attrs.holderBean.imageUploadBean.uploadImage}" required="true"
+                         requiredMessage="#{phrases.f_image_upload_no_file}" onchange="updateSelectedFilename()" styleClass="d-none">
+                <f:validator validatorId="imageValidator" for="fileSelectInput"/>
+            </h:inputFile>
+
+            <h:commandButton id="uploadButton" value="#{phrases.f_image_upload_upload_button}"
+                             action="#{cc.attrs.holderBean.uploadImage(cc.attrs.holderBean.imageUploadBean.uploadImage.inputStream)}"
+                             styleClass="btn btn-primary" onclick="this.style.opacity = '0.6';"/>
+
+            <h:message for="fileSelectInput"/>
+
+            <!-- Necessary for stopping the user to send multiple parallel upload requests by clicking the upload button multiple times. -->
+            <script>
+                $('[id$=imageUploadForm]').one('submit', function () {
+                    $(this).find('input[type="submit"]').attr('onclick', 'this.style.opacity = "0.6"; return false;');
+                });
+            </script>
+        </h:form>
+
+        <!-- Image display elements -->
+        <h:form id="uploadedImagesForm" rendered="#{cc.attrs.holderBean.imageUploadBean.images.size() != 0}">
+            <!-- HTML tags used in order to display the images horizontally. -->
+            <table class="m-auto align-middle">
+                <tbody>
+                <tr>
+                    <ui:repeat id="uploadField" value="#{cc.attrs.holderBean.imageUploadBean.images}" var="image"
+                               styleClass="m-auto mt-3 mb-3 align-middle">
+                        <td>
+                            <h:panelGrid columns="1" styleClass="m-auto align-middle">
+                                <h:graphicImage value="#{'/image?id='.concat(image.id)}" styleClass="uploadedImage p-2" alt="#{image.id}"/>
+                                <h:commandButton value="#{phrases.f_image_upload_delete_button}" action="#{cc.attrs.holderBean.deleteImage(image)}"
+                                                 styleClass="btn btn-secondary p-2"/>
+                            </h:panelGrid>
+                        </td>
+                    </ui:repeat>
+                </tr>
+                </tbody>
+            </table>
+        </h:form>
+
+    </cc:implementation>
+
+</ui:component>

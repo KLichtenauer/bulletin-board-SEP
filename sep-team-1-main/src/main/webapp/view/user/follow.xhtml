@@ -1,0 +1,34 @@
+<!-- Author: Jonas Elsper -->
+<ui:composition template="/resources/templates/main.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <f:metadata>
+        <f:viewAction action="/view/public/landing" if="#{empty flash.ad}"/>
+    </f:metadata>
+    <ui:define name="title">#{phrases.f_follow_pageName}</ui:define>
+    <ui:define name="content">
+        <h:form id="follow_form">
+            <!-- title of ad -->
+            <h:outputText value="#{phrases.f_follow_followAdWithTitle}" styleClass="h3"/>
+            <br/>
+            <h:outputText id="follow_title" value="#{followBean.ad.title} " styleClass="form-check-label"/>
+            <!-- checkbox whether ad is followed or not -->
+            <h:selectBooleanCheckbox id="follow_followAd" value="#{followBean.followAd}" styleClass="form-check-input"/>
+            <br/>
+            <br/>
+            <h:outputText value="#{phrases.f_follow_followUser}" styleClass="h3"/>
+            <br/>
+            <!-- name of user -->
+            <h:outputText id="follow_username" value="#{followBean.ad.creator.credentials.username} "
+                          styleClass="form-check-label"/>
+            <!-- checkbox whether user is followed or not -->
+            <h:selectBooleanCheckbox id="follow_followUser" value="#{followBean.followUser}" styleClass="form-check-input"/>
+            <!-- save changes button -->
+            <br/>
+            <br/>
+            <h:commandButton id="follow_saveButton" value="#{phrases.f_follow_save}" styleClass="btn btn-primary" action="#{followBean.save()}"/>
+        </h:form>
+    </ui:define>
+</ui:composition>

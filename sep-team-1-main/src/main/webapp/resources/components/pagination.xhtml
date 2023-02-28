@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Autor: Michael Grüner-->
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:ui="jakarta.faces.facelets"
+              xmlns:h="jakarta.faces.html"
+              xmlns:cc="jakarta.faces.composite"
+              xmlns:f="jakarta.faces.core"
+              xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <!-- Interface -->
+    <cc:interface>
+        <cc:attribute name="backingBean"
+                      type="de.schwarzes_brett.backing.backing_beans.PaginationBean"
+                      required="true"/>
+        <cc:attribute name="adPagination"
+                      type="java.lang.Boolean"
+                      required="true"/>
+    </cc:interface>
+
+    <!-- Implementation -->
+    <cc:implementation>
+
+        <!-- searchBar -->
+        <h:panelGrid id="searchBar_panelGrid" columns="3" styleClass="table table-borderless allign-middle">
+
+            <h:panelGrid scope="col">
+                <h:inputText id="searchBar_searchInput"
+                             value="#{cc.attrs.backingBean.pagination.search.searchTerm}"
+                             styleClass="form-control"
+                             a:placeholder="#{phrases.f_pagination_searchLabel}"/>
+            </h:panelGrid>
+
+            <h:panelGrid scope="col">
+                <h:inputText id="searchBar_locationInput"
+                             value="#{cc.attrs.backingBean.pagination.search.locationSearch}"
+                             rendered="#{cc.attrs.adPagination}"
+                             styleClass="form-control"
+                             a:placeholder="#{phrases.f_pagination_locationLabel}"/>
+            </h:panelGrid>
+
+            <h:panelGrid scope="col">
+                <h:commandButton id="searchBar_searchButton"
+                                 value="#{phrases.f_pagination_searchButton}"
+                                 action="#{cc.attrs.backingBean.search()}"
+                                 styleClass="btn btn-secondary"/>
+            </h:panelGrid>
+        </h:panelGrid>
+        <!-- searchBar end -->
+
+        <!-- pagination -->
+        <h:panelGrid id="pagination_sortPanel" columns="2" styleClass="table table-borderless align-middle">
+            <h:panelGrid scope="col">
+                <h:outputText id="pagination_expiredAdsLabel"
+                              for="pagination_expiredAdsSelect"
+                              value="#{phrases.f_pagination_expiredAdsLabel}"
+                              rendered="#{cc.attrs.adPagination}"
+                              styleClass="p form-check-label"/>
+            </h:panelGrid>
+            <h:panelGrid scope="col">
+                <h:selectBooleanCheckbox id="pagination_expiredAdsSelect"
+                                         value="#{cc.attrs.backingBean.pagination.showExpiredAds}"
+                                         rendered="#{cc.attrs.adPagination}"
+                                         styleClass="p form-check-input"/>
+            </h:panelGrid>
+        </h:panelGrid>
+
+        <h:dataTable id="pagination_dataTable"
+                     value="#{cc.attrs.backingBean.listElements}"
+                     var="element"
+                     styleClass="table align-middle">
+            <cc:insertChildren/>
+        </h:dataTable>
+
+        <h:panelGrid rendered="#{cc.attrs.backingBean.pagination.lastPageNumber > 1}" id="pagination_navigationGrid" columns="6">
+            <h:commandButton id="pagination_firstButton"
+                             value="#{phrases.f_pagination_firstButton}"
+                             action="#{cc.attrs.backingBean.goToFirstPage()}"
+                             disabled="#{cc.attrs.backingBean.pagination.pageNumber == 1}"
+                             styleClass="btn btn-primary"/>
+            <h:commandButton id="pagination_prevButton"
+                             value="#{phrases.f_pagination_prevButton}"
+                             action="#{cc.attrs.backingBean.goToPrevPage()}"
+                             disabled="#{cc.attrs.backingBean.prevButtonEnabled()}"
+                             styleClass="btn btn-primary"/>
+            <h:inputText id="pagination_pageInput"
+                         value="#{cc.attrs.backingBean.pagination.pageNumber}"
+                         required="true"
+                         validatorMessage="#{phrases.f_pagination_inputMessage}"
+                         converterMessage="#{phrases.f_pagination_inputMessage}"
+                         requiredMessage="#{phrases.f_pagination_inputMessage}">
+                <f:validateLongRange minimum="1" maximum="#{cc.attrs.backingBean.pagination.lastPageNumber}"/>
+            </h:inputText>
+            <h:commandButton id="pagination_selectedButton"
+                             value="#{phrases.f_pagination_selectedButton}"
+                             action="#{cc.attrs.backingBean.goToSelectedPage()}"
+                             styleClass="btn btn-primary"/>
+            <h:commandButton id="pagination_nextButton"
+                             value="#{phrases.f_pagination_nextButton}"
+                             action="#{cc.attrs.backingBean.goToNextPage()}"
+                             disabled="#{cc.attrs.backingBean.nextButtonEnabled()}"
+                             styleClass="btn btn-primary"/>
+            <h:commandButton id="pagination_lastButton"
+                             value="#{phrases.f_pagination_lastButton} (#{cc.attrs.backingBean.pagination.lastPageNumber})"
+                             action="#{cc.attrs.backingBean.goToLastPage()}"
+                             disabled="#{cc.attrs.backingBean.pagination.pageNumber == cc.attrs.backingBean.pagination.lastPageNumber}"
+                             styleClass="btn btn-primary"/>
+        </h:panelGrid>
+        <h:message for="pagination_pageInput" styleClass="ui-message-error"/>
+        <!-- pagination end -->
+    </cc:implementation>
+</ui:component>

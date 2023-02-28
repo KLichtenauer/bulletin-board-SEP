@@ -1,0 +1,90 @@
+<!-- Autor: Valentin Damjantschitsch -->
+<ui:composition
+        xmlns:h="jakarta.faces.html"
+        xmlns:ui="jakarta.faces.facelets">
+
+    <h:form id="headerForm">
+
+        <h:panelGroup id="header" styleClass="header d-flex justify-content-between align-items-center">
+
+            <h:link outcome="/view/public/landing">
+                <h:graphicImage id="header_logo" styleClass="logo" value="#{headerBean.generateLogoLink()}" alt="Logo"/>
+            </h:link>
+
+            <!-- Menu buttons depending on the role of the user -->
+            <h:panelGroup styleClass="menu d-flex flex-wrap justify-content-end align-items-center">
+
+                <!-- Help Button -->
+                <h:commandButton id="header_helpButton" styleClass="btn btn-primary help me-2" type="submit"
+                                 value="#{phrases.f_header_helpButton}" action="#{helpBean.showHelp()}"/>
+
+                <!-- Buttons for anonymous visitors -->
+                <h:panelGroup rendered="#{userSession.anonymous}">
+                    <!-- Login Button -->
+                    <h:button id="header_loginButton" styleClass="btn btn-primary me-2" value="#{phrases.f_header_loginButton}"
+                              outcome="/view/public/login"/>
+
+                    <h:outputText styleClass="me-2" value="#{phrases.f_header_or}"/>
+
+                    <!-- Register Button -->
+                    <h:button id="header_registerButton" styleClass="btn btn-primary me-2" value="#{phrases.f_header_registerButton}"
+                              outcome="/view/public/registration"/>
+
+                </h:panelGroup>
+
+                <!-- Buttons for logged in users -->
+                <h:panelGroup rendered="#{userSession.loggedIn}"> <!--  insert once the userroles are setup -->
+
+                    <!-- To personal welcome page Button -->
+                    <h:button id="header_welcomeButton" styleClass="btn btn-primary me-2" value="#{phrases.f_header_welcomeButton}"
+                              outcome="/view/user/welcome"/>
+
+                    <!-- Edit profile Button -->
+                    <h:commandButton id="header_profileButton" styleClass="btn btn-primary me-2" value="#{phrases.f_header_profileButton}"
+                                     action="#{headerBean.goToProfile()}"/>
+
+                    <!-- Edit ads Button -->
+                    <h:button id="header_adManagementButton" styleClass="btn btn-primary me-2" value="#{phrases.f_header_adManagementButton}"
+                              outcome="/view/user/adManagement"/>
+
+                    <!-- Logout Button -->
+                    <h:commandButton id="header_logoutButton" styleClass="btn btn-primary me-2" type="submit" value="#{phrases.f_header_logoutButton}"
+                                     action="#{headerBean.logout()}"/>
+
+                </h:panelGroup>
+
+                <!-- Buttons for admins rendered="#{userSession.user.role==Role.ADMIN}" -->
+                <h:panelGroup rendered="#{userSession.admin}">
+
+                    <!-- User administration button -->
+                    <h:button id="header_userAdministrationButton" styleClass="btn btn-primary me-2"
+                              value="#{phrases.f_header_userAdministrationButton}"
+                              outcome="/view/admin/userAdministration"/>
+
+                    <!-- Ads administration button -->
+                    <h:button id="header_adAdministrationButton" styleClass="btn btn-primary me-2" value="#{phrases.f_header_adAdministrationButton}"
+                              outcome="/view/admin/adAdministration"/>
+
+                    <!-- Category administration button -->
+                    <h:button id="header_categoryAdministrationButton" styleClass="btn btn-primary me-2"
+                              value="#{phrases.f_header_categoryAdministrationButton}"
+                              outcome="/view/admin/categoryAdministration"/>
+
+                    <!-- Application settings button -->
+                    <h:button id="header_settingsButton" styleClass="btn btn-primary me-2" value="#{phrases.f_header_settingsButton}"
+                              outcome="/view/admin/settings"/>
+
+                </h:panelGroup>
+
+            </h:panelGroup>
+            <!-- End of Menu buttons -->
+
+        </h:panelGroup>
+        <!-- End of the header -->
+    </h:form>
+
+    <aside class="aside-wrapper">
+        <h:outputText value="#{helpBean.helpClause}" rendered="#{helpBean.helpIsVisible}" escape="false"/>
+    </aside>
+
+</ui:composition>

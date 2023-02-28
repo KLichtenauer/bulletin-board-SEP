@@ -1,0 +1,83 @@
+<ui:composition template="/resources/templates/main.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:comp="jakarta.faces.composite/components">
+    <!-- Please define your page title here -->
+    <ui:define id="settings_pageTitle" name="title">#{phrases.f_settings_pageTitle}</ui:define>
+    <ui:define name="content">
+        <!-- Your code begins here. Please insert your code and content into this section -->
+
+        <h:panelGroup id="settings">
+
+            <!-- Input operator logo -->
+            <h:panelGroup>
+                <h:outputLabel id="settings_logoLabel" value="#{phrases.f_settings_logoLabel}" for="settings_logo" styleClass="h4 inputLabel"/>
+                <comp:imageUpload id="settings_logo" imageCount="1" holderBean="#{settingsBean}"/>
+            </h:panelGroup>
+
+            <!-- input forms -->
+            <h:panelGroup styleClass="d-flex justify-content-center text-center">
+
+                <h:form id="settings_form" styleClass="settings_form">
+
+                    <!-- Input operator name -->
+                    <h:panelGroup styleClass="form-group">
+                        <h:outputLabel id="settings_nameLabel" value="#{phrases.f_settings_nameLabel}" for="settings_name"
+                                       styleClass="p-2 h4 inputLabel"/>
+                        <h:inputText id="settings_name" value="#{settingsBean.settings.name}" styleClass="md-textarea form-control"/>
+                    </h:panelGroup>
+
+                    <!-- Input operator contact -->
+                    <h:panelGroup styleClass="form-group">
+                        <h:outputLabel id="settings_contactLabel" value="#{phrases.f_settings_contactLabel}" for="settings_contact"
+                                       styleClass="h4 inputLabel"/>
+                        <h:inputText id="settings_contact" value="#{settingsBean.settings.contact}" styleClass="md-textarea form-control"/>
+                    </h:panelGroup>
+
+                    <!-- Input operator description -->
+                    <h:panelGroup styleClass="form-group">
+                        <h:outputLabel id="settings_descriptionLabel" value="#{phrases.f_settings_descriptionLabel}" for="settings_description"
+                                       styleClass="h4 inputLabel"/>
+                        <h:inputTextarea id="settings_description" value="#{settingsBean.settings.description}"
+                                         styleClass="md-textarea form-control textAreaBig"/>
+                    </h:panelGroup>
+
+                    <!-- Input operator impressum -->
+                    <h:panelGroup styleClass="form-group">
+                        <h:outputLabel id="settings_imprintLabel" value="#{phrases.f_settings_imprintLabel}" for="settings_imprint"
+                                       styleClass="h4 inputLabel"/>
+                        <h:inputTextarea id="settings_imprint" value="#{settingsBean.settings.imprint}"
+                                         styleClass="md-textarea form-control textAreaBig"/>
+                    </h:panelGroup>
+
+                    <!-- Input operator privacy policy -->
+                    <h:panelGroup styleClass="form-group">
+                        <h:outputLabel id="settings_privacyPolicyLabel" value="#{phrases.f_settings_privacyPolicyLabel}"
+                                       for="settings_privacyPolicy" styleClass="h4 inputLabel"/>
+                        <h:inputTextarea id="settings_privacyPolicy" value="#{settingsBean.settings.privacyPolicy}"
+                                         styleClass="md-textarea form-control textAreaBig"/>
+                    </h:panelGroup>
+
+                    <!-- select option for application style -->
+                    <h:panelGroup styleClass="form-group">
+                        <h:outputLabel id="settings_lookFeelLabel" value="#{phrases.f_settings_lookFeelLabel}" for="settings_lookFeel"
+                                       styleClass="h4 inputLabel"/>
+                        <h:selectOneMenu id="settings_lookFeel" value="#{settingsBean.settings.styleSheet}" styleClass="form-select">
+                            <f:selectItems id="settings_lookFeelTheme_#{element}" value="#{settingsBean.getListOfStylesheets()}" var="element"
+                                           itemLabel="#{element}" itemValue="#{element}.css"/>
+                        </h:selectOneMenu>
+
+                    </h:panelGroup>
+
+                    <!-- save changes button -->
+                    <h:commandButton id="settings_saveButton" value="#{phrases.f_settings_saveButton}" action="#{settingsBean.updateSettings()}"
+                                     styleClass="btn btn-secondary m-4"/>
+                </h:form>
+            </h:panelGroup>
+        </h:panelGroup>
+
+        <!-- Your code ends here  -->
+    </ui:define>
+</ui:composition>

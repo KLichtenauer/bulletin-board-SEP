@@ -1,0 +1,119 @@
+.btnYellow {
+    background-color: #F2AF29;
+    border: 1px solid black;
+}
+
+.btnRed {
+    color: white;
+    background-color: #AD343E;
+}
+
+.btnRed:hover {
+    color: white;
+    background-color: #AD343E;
+}
+
+.btnDark {
+    background-color: #474747;
+}
+
+.searchbar {
+    background-color: #474747;
+    padding-top: 25;
+    padding-bottom: 10;
+    
+}
+
+.card-img-top {
+    width: auto;
+    height: 150;
+    object-fit: cover;
+}
+
+.card {
+    margin-top: 20;
+}
+
+a {
+    color: #AD343E;
+}
+
+a:hover {
+    color: #F2AF29;
+}
+
+.card-text {
+    color: green;
+}
+
+/* Style the list */
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+  }
+  
+  /* Display list items side by side */
+  ul.breadcrumb li {
+    display: inline;
+    font-size: 12px;
+  }
+  
+  /* Add a slash symbol (/) before/behind each list item */
+  ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+  }
+  
+  /* Add a color to all links inside the list */
+  ul.breadcrumb li a {
+    color: #AD343E;
+    text-decoration: none;
+  }
+  
+  /* Add a color on mouse-over */
+  ul.breadcrumb li a:hover {
+    color: #F2AF29;
+    text-decoration: underline;
+  }
+
+  .footer {
+    margin-top: 30;
+  }
+
+  .logo {
+    padding: 0 5;
+    filter: invert(76%) sepia(5%) saturate(5868%) hue-rotate(352deg) brightness(98%) contrast(93%);
+  }
+
+  .pagination {
+    padding-top: 20;
+  }
+
+  /* Pagination Link Color */
+  .page-link {
+    color: black;
+  }
+
+  /* Pagination Link Color Hover */
+  .page-link:hover {
+    color: #F2AF29;
+  }
+
+  .category {
+    list-style: none;
+    margin-top: 20;
+  }
+
+  .category a {
+    text-decoration: none;
+    line-height: 2;
+  }
+
+  .subcategory {
+    list-style: none;
+  }
+
+  .selectedCategory {
+    color:#F2AF29
+  }

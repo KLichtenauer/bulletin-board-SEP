@@ -1,0 +1,97 @@
+<ui:composition template="/resources/templates/main.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:comp="jakarta.faces.composite/components"
+                xmlns:p="http://primefaces.org/ui">
+
+    <!-- Please define your page title here -->
+    <ui:define name="title">edit category</ui:define>
+    <ui:define name="content">
+        <p:importConstants type="de.schwarzes_brett.dto.Limits" var="limits"/>
+
+        <h:form>
+            <h:panelGrid id="categoryAdministration_outer_panelGrid" columns="2" styleClass="m-auto mt-3 align-middle">
+                <comp:categoryNavigation id="landing_categoryNavigation"
+                                         showBreadcrumb="false"
+                                         backingBean="#{editCategoryBean}"/>
+                <h:message for="landing_categoryNavigation"/>
+            </h:panelGrid>
+        </h:form>
+
+
+        <h:form id="editCategory_formular">
+            <h:panelGrid columns="3" columnClasses="leftColumn,rightColumn" styleClass="m-auto mt-3 align-middle">
+
+                <h:outputText value="#{phrases.f_editCategory_category_to_be_edited}"
+                              rendered="#{editCategoryBean.categoryGettingEdited}"
+                              for="editCategory_categoryToEdit"
+                              styleClass="p-2"/>
+                <h:outputText id="editCategory_categoryToEdit"
+                              value="#{editCategoryBean.categoryToBeEdited.name}"
+                              rendered="#{editCategoryBean.categoryGettingEdited}"/>
+                <h:message for="editCategory_categoryToEdit"
+                           rendered="#{editCategoryBean.categoryGettingEdited}"/>
+
+
+                <h:outputText value="#{phrases.f_editCategory_chosen_tree_category}" styleClass="p-2"/>
+                <h:outputText id="editCategory_category" value="#{editCategoryBean.fromTreeSelectedCategory.name}" styleClass="p-2"/>
+                <h:message for="editCategory_editedCategory"/>
+
+                <h:outputText value="#{phrases.f_editCategory_title}"
+                              id="editCategory_editedCategory"
+                              for="editCategory_name"
+                              styleClass="p-2 required"/>
+                <h:inputText id="editCategory_name"
+                             value="#{editCategoryBean.categoryToBeEdited.name}"
+                             styleClass="p-2"
+                             required="true"
+                             requiredMessage="#{phrases.f_editCategory_required_msg_title}">
+                    <f:validateLength maximum="#{limits.MEDIUM_TEXT_MAX_LENGTH}"/>
+                </h:inputText>
+                <h:message for="editCategory_name"/>
+
+
+                <h:outputText value="#{phrases.f_editCategory_description} "
+                              for="editCategory_description"
+                              styleClass="p-2"/>
+                <h:inputText id="editCategory_description"
+                             value="#{editCategoryBean.categoryToBeEdited.description}"
+                             styleClass="p-2"
+                             required="false">
+                    <f:validateLength maximum="#{limits.LONG_TEXT_MAX_LENGTH}"/>
+                </h:inputText>
+                <h:message for="editCategory_description"/>
+
+            </h:panelGrid>
+
+
+            <h:commandButton id="editCategory_saveButton"
+                             action="#{editCategoryBean.save()}"
+                             value="#{phrases.f_editCategory_save_changes}"
+                             styleClass="btn btn-primary mt-4"/>
+
+            <br/>
+
+            <h:button id="deleteCategory" value="#{phrases.f_editCategory_delete_category}" onclick="PF('deletion-dialog').show(); return false;"
+                      styleClass="btn btn-secondary" rendered="#{editCategoryBean.categoryGettingEdited}"/>
+            <p:dialog header="#{phrases.f_editCategory_delete_category}" widgetVar="deletion-dialog" modal="true" draggable="false"
+                      resizable="false">
+                <h:outputText value="#{phrases.f_editCategory_deletion_dialog_body}"/>
+                <h:panelGroup>
+                    <h:form id="acceptDeletion_form">
+                        <h:commandButton id="acceptDeletion"
+                                         value="#{phrases.f_editCategory_deletion_dialog_confirm}"
+                                         action="#{editCategoryBean.delete()}"
+                                         styleClass="btn btn-secondary m-2"/>
+                    </h:form>
+                    <h:button id="abortDeletion"
+                              value="#{phrases.f_editCategory_deletion_dialog_abort}" onclick="PF('deletion-dialog').hide(); return false;"
+                              styleClass="btn btn-primary"/>
+                </h:panelGroup>
+            </p:dialog>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

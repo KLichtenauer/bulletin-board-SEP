@@ -1,0 +1,24 @@
+<ui:composition template="/resources/templates/main.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:comp="jakarta.faces.composite/components">
+    <!-- Please define your page title here -->
+    <ui:define name="title">category Administration</ui:define>
+    <ui:define name="content">
+
+        <h:form id="categoryAdministration_form">
+            <h:panelGrid id="categoryAdministration_outer_panelGrid" columns="1" styleClass="m-auto mt-3 align-middle">
+                <comp:categoryNavigation id="categoryAdministration_categoryNavigation" showBreadcrumb="false"
+                                         backingBean="#{categoryAdministrationBean}"/>
+
+                <h:commandButton id="categoryAdministration_newButton"
+                                 value="#{phrases.f_categoryAdministration_new_category}"
+                                 action="#{categoryAdministrationBean.createCategory()}"
+                                 styleClass="btn btn-primary mt-4"
+                />
+            </h:panelGrid>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

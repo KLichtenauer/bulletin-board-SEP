@@ -1,0 +1,335 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="resources/main.css">
+  <title>Schwarzes-Brett.de - Das Anzeigenportal</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+
+  <!-- Navigation bar with Logo and buttons to login or register -->
+  <nav class="navbar navbar-expand-sm navbar-dark bg-light flex-sm-nowrap flex-wrap">
+    <div class="container">
+      <div>
+        <a class="navbar-brand" href="#">
+          <img src="resources/Logos/Schwarzes-Brett-Logo-500-150.png" alt="" width="300" height="90">
+        </a>
+      </div>
+      <div>
+        <form>
+          <button class="btn btnRed me-2" type="submit">Anmelden</button>
+          <span class="me-2">oder</span>
+          <button class="btn btnRed" type="submit">Registrieren</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Searchbar section -->
+  <div class="searchbar">
+    <div class="container d-flex">
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Was suchst Du?" aria-label="Search">
+        <input class="form-control me-2" type="plz" placeholder="PLZ oder Ort" aria-label="plz">
+        <button class="btn btnYellow me-2" type="submit">Finden</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Breadcrumbs -->
+
+  <div class="container">
+    <ul class="breadcrumb">
+      <li><a href="#">Alle Kategorien</a></li>
+      <li><a href="#">Auto, Rad & Boot</a></li>
+    </ul>
+  </div>
+
+  <!-- Sidebar -->
+
+  <div class="row">
+    <div class="col-lg-2 col-md-4 col-sm-12">
+      <ul class="category">
+       <li><a href="">Alle Kategorien
+        <ul class="subcategory">
+          <li><a class="selectedCategory" href="">Auto, Rad, Boot</a></li>
+          <li><a href="">Immobilien</a></li>
+          <li><a href="">Dienstleistungen</a></li>
+          <li><a href="">Famiele, Kind & Baby</a></li>
+          <li><a href="">Freizeit, Hobby, Nachbarschaft</a></li>
+          <li><a href="">Haus & Garten</a></li>
+          <li><a href="">Haustiere</a></li>
+          <li><a href="">Jobs</a></li>
+          <li><a href="">Mode & Beauty</a></li>
+          <li><a href="">Elektronik</a></li>
+          <li><a href="">Musik, Filme & Bücher</a></li>
+          <li><a href="">Eintrittskarten & Tickets</a></li>
+          <li><a href="">Unterricht & Kurse</a></li>
+          <li><a href="">Verschenken & Tauschen</a></li>
+        </ul></a>
+      </li>
+      </ul>
+    </div>
+
+    <!-- ADS -->
+
+    <div class="col-lg-10 col-md-8 col-sm-12">
+      <div class="row">
+        <div class="col-lg-2 col-md-4 col-sm-8">
+          <div class="card">
+            <img src="resources/images/Boot.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Boot zu mieten für JVA</h5>
+              <p class="card-text">500€</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-8">
+          <div class="card">
+            <img src="resources/images/Fahrrad.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Fahrrad zu verschenken</h5>
+              <p class="card-text">0€</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-8">
+          <div class="card">
+            <img src="resources/images/blaubaer.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Bootführerschein bei Kpt. Blaubär</h5>
+              <p class="card-text">5.000€</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-8">
+          <div class="card">
+            <img src="resources/images/reifen.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Autoreifen gestohlen...</h5>
+              <p class="card-text">-</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-8">
+          <div class="card">
+            <img src="resources/images/fahradpumpe.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Fahhradpumpe</h5>
+              <p class="card-text">20€</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="row">
+
+          <div class="col-lg-2 col-md-4 col-sm-8">
+            <div class="card">
+              <img src="resources/images/Default-Ads-Image-200-150.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Suche Gebrauchtwagen</h5>
+                <p class="card-text">450€</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-8">
+            <div class="card">
+              <img src="resources/images/Umzuege.jpeg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Wir machen Ihren Umzug! Jetzt Sprinter mit FahrerIn mieten</h5>
+                <p class="card-text">VB</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-8">
+            <div class="card">
+              <img src="resources/images/Tickets.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Bootsfahrt in Paris gewinnen!</h5>
+                <p class="card-text">-</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-8">
+            <div class="card">
+              <img src="resources/images/Auto.jpeg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Wir kaufen dein Auto</h5>
+                <p class="card-text">VB</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-8">
+            <div class="card">
+              <img src="resources/images/Bagger.jpeg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Bagger zu vermieten</h5>
+                <p class="card-text">VB</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+  </div>
+
+  <!-- Pagination -->
+
+  <div class="container d-flex justify-content-center pagination">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Vorherige</a></li>
+        <li class="page-item"><a class="page-link selectedCategory" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">...</a></li>
+        <li class="page-item"><a class="page-link" href="#">Nächste</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  
+
+  <!-- Footer -->
+  <footer class="footer text-center text-lg-start bg-light text-muted">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+      <!-- Left -->
+      <div class="container me-5 d-none d-lg-block">
+        <span>Folge Schwarzes-Brett.de:</span>
+        <img class="logo" src="resources/Logos/iconmonstr-facebook-5.svg">
+        <img class="logo" src="resources/Logos/iconmonstr-instagram-15.svg">
+        <img class="logo" src="resources/Logos/iconmonstr-youtube-10.svg">
+      </div>
+      <!-- Left -->
+
+      <!-- Right -->
+      <div>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-google"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fas fa-gem"></i>Schwarzes-Brett.de -<br>Das Anzeigenportal
+            </h6>
+            <p>
+              Bei uns werden Sie fündig!
+              Egal ob Sie etwas Verkaufen, ein Jobangebot inserieren oder eine Vermisstenanzeigen aufgeben möchten.
+              Schnell und einfach Anzeige erstellt und einfach abwarten.
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Beliebte Kategorien
+            </h6>
+            <p>
+              <a href="#!" class="text-reset">Zu Verschenken</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Jobangebote</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Immobilien</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Fahrräder</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Hilfreiche Links
+            </h6>
+            <p>
+              <a href="#!" class="text-reset">Impressuem</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Datenschutz</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Hilfe</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Kontaktieren Sie uns!</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Kontakt</h6>
+            <p><i class="fas fa-home me-3"></i>Schwarzes-Brett.de GmbH</p>
+            <p><i class="fas fa-home me-3"></i>Innstraße 1, 94032 Passau</p>
+            <p><i class="fas fa-envelope me-3"></i>info@schwarzes-brett.de</p>
+            <p><i class="fas fa-phone me-3"></i> +49 851 / 123456</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2022 Copyright:
+      <a class="text-reset fw-bold" href="#">Schwarzes-Brett.de</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
+</body>
+
+</html>

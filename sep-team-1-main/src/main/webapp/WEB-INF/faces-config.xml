@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              version="4.0"
+              xmlns="https://jakarta.ee/xml/ns/jakartaee"
+              xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                      https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd">
+
+    <application>
+        <locale-config>
+            <default-locale>de</default-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>de.schwarzes_brett.backing.dictionary.i18n.phrases</base-name>
+            <var>phrases</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>de.schwarzes_brett.backing.dictionary.i18n.helpPhrases</base-name>
+            <var>helpPhrases</var>
+        </resource-bundle>
+        <message-bundle>
+            de.schwarzes_brett.backing.dictionary.i18n.messages.messages
+        </message-bundle>
+    </application>
+
+    <factory>
+        <exception-handler-factory>
+            de.schwarzes_brett.backing.exception.MainExceptionHandler$Factory
+        </exception-handler-factory>
+    </factory>
+
+    <lifecycle>
+        <phase-listener>de.schwarzes_brett.backing.lifecycle.TrespassListener</phase-listener>
+    </lifecycle>
+
+
+</faces-config>

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:ui="http://java.sun.com/jsf/facelets"
+              xmlns:h="jakarta.faces.html"
+              xmlns:cc="jakarta.faces.composite"
+              xmlns:p="http://primefaces.org/ui">
+
+    <!-- Interface -->
+    <cc:interface>
+        <cc:attribute name="backingBean"
+                      required="true"/>
+        <cc:attribute name="showBreadcrumb" required="true" type="java.lang.Boolean"/>
+    </cc:interface>
+
+    <!-- Implementation -->
+
+    <cc:implementation>
+
+        <p:panel id="categoryNavigationbreadcrumb" rendered="#{cc.attrs.showBreadcrumb}">
+            <ui:repeat value="#{categoryNavigationBean.breadCrumbList}" var="category" styleClass="breadcrumb">
+                <h:commandLink value="#{category.data.name}" action="#{cc.attrs.backingBean.onCategoryClick(category.data)}"
+                               styleClass="breadcrumbElement"/>
+            </ui:repeat>
+        </p:panel>
+
+
+        <p:panel id="categoryNavigation">
+            <p:tree value="#{categoryNavigationBean.root}" var="node" id="treePrime" dynamic="true">
+                <p:ajax event="expand" listener="#{categoryNavigationBean.onNodeExpand(node)}" process="@this"/>
+                <p:treeNode expandedIcon="fas fa-chevron-up" collapsedIcon="ui-icon ui-icon-folder-collapsed" id="treeNode" ajax="true">
+                    <p:commandButton process="@this" action="#{cc.attrs.backingBean.onCategoryClick(node)}" value="#{node.name}"
+                                     styleClass="ui-button-flat ui-button-plain"
+                                     ajax="false"
+                                     title="#{node.description}"/>
+                </p:treeNode>
+            </p:tree>
+        </p:panel>
+    </cc:implementation>
+</ui:component>

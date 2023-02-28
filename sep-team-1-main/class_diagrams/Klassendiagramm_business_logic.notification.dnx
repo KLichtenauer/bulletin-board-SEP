@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<!--Rational Software Architect Designer 9.7.1.1-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<umlnotation:UMLDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xmi:id="_md-IYGFDEe2Sat9fqBO4Zg" type="Class" name="Klassendiagramm_business_logic.notification.dnx" graphLayout="HorizontalStraightHierarchical">
+  <eAnnotations xmi:id="_md-IYWFDEe2Sat9fqBO4Zg" source="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+    <details xmi:id="_md-IYmFDEe2Sat9fqBO4Zg" key="com.ibm.xtools.activities.javaVisualizerActivity" value="1"/>
+  </eAnnotations>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_mgep0GFDEe2Sat9fqBO4Zg" fontName="Sans" fontHeight="8" fillColor="15622097" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+    <children xmi:type="notation:DecorationNode" xmi:id="_mgfQ4GFDEe2Sat9fqBO4Zg" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_mgfQ4WFDEe2Sat9fqBO4Zg" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_mgfQ4mFDEe2Sat9fqBO4Zg" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_mgf38GFDEe2Sat9fqBO4Zg" type="Kind"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_mgf38WFDEe2Sat9fqBO4Zg" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_mgf38mFDEe2Sat9fqBO4Zg" type="Parent"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_mgf382FDEe2Sat9fqBO4Zg" type="EnumerationCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_mgf39GFDEe2Sat9fqBO4Zg" visible="false" type="AttributeCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_mgf39WFDEe2Sat9fqBO4Zg" visible="false" type="OperationCompartment"/>
+    <element xmi:type="uml:Enumeration" href="mmi:///#jsrctype%5Ename=NotificationLevel%5Bjcu%5Ename=NotificationLevel.java%5Bjpack%5Ename=de.schwarzes_brett.business_logic.notification%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=schwarzes_brett%5D%5D%5D%5D$uml.Enumeration"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mgep0WFDEe2Sat9fqBO4Zg" x="21996" y="7896"/>
+  </children>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_mgf39mFDEe2Sat9fqBO4Zg" fontName="Sans" fontHeight="8" fillColor="15622097" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+    <children xmi:type="notation:DecorationNode" xmi:id="_mgf3-GFDEe2Sat9fqBO4Zg" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_mgf3-WFDEe2Sat9fqBO4Zg" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_mgf3-mFDEe2Sat9fqBO4Zg" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_mgf3-2FDEe2Sat9fqBO4Zg" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_mggfAGFDEe2Sat9fqBO4Zg" type="Parent"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_mggfAWFDEe2Sat9fqBO4Zg" visible="false" type="ANNOTATION_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_mggfAmFDEe2Sat9fqBO4Zg" type="ANNOTATED_ATTRIBUTE_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_mggfA2FDEe2Sat9fqBO4Zg" type="ANNOTATED_OPERATION_COMPARTMENT"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=Notification%5Bjcu%5Ename=Notification.java%5Bjpack%5Ename=de.schwarzes_brett.business_logic.notification%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=schwarzes_brett%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mgf392FDEe2Sat9fqBO4Zg" x="13048" y="4515"/>
+  </children>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_mggfBGFDEe2Sat9fqBO4Zg" fontName="Sans" fontHeight="8" fillColor="15622097" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+    <children xmi:type="notation:DecorationNode" xmi:id="_mggfBmFDEe2Sat9fqBO4Zg" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_mggfB2FDEe2Sat9fqBO4Zg" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_mggfCGFDEe2Sat9fqBO4Zg" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_mggfCWFDEe2Sat9fqBO4Zg" type="Kind"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_mggfCmFDEe2Sat9fqBO4Zg" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_mggfC2FDEe2Sat9fqBO4Zg" type="Parent"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_mggfDGFDEe2Sat9fqBO4Zg" type="EnumerationCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_mghGEGFDEe2Sat9fqBO4Zg" visible="false" type="AttributeCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_mghGEWFDEe2Sat9fqBO4Zg" visible="false" type="OperationCompartment"/>
+    <element xmi:type="uml:Enumeration" href="mmi:///#jsrctype%5Ename=NotificationContext%5Bjcu%5Ename=NotificationContext.java%5Bjpack%5Ename=de.schwarzes_brett.business_logic.notification%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=schwarzes_brett%5D%5D%5D%5D$uml.Enumeration"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mggfBWFDEe2Sat9fqBO4Zg" x="21722"/>
+  </children>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_mghGEmFDEe2Sat9fqBO4Zg" fontName="Sans" fontHeight="8" fillColor="15622097" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+    <children xmi:type="notation:DecorationNode" xmi:id="_mghGFGFDEe2Sat9fqBO4Zg" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_mghGFWFDEe2Sat9fqBO4Zg" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_mghGFmFDEe2Sat9fqBO4Zg" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_mghGF2FDEe2Sat9fqBO4Zg" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_mghGGGFDEe2Sat9fqBO4Zg" type="Parent"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_mghGGWFDEe2Sat9fqBO4Zg" type="ANNOTATION_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_mghGGmFDEe2Sat9fqBO4Zg" type="ANNOTATED_ATTRIBUTE_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_mghGG2FDEe2Sat9fqBO4Zg" type="ANNOTATED_OPERATION_COMPARTMENT"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=NotificationProvider%5Bjcu%5Ename=NotificationProvider.java%5Bjpack%5Ename=de.schwarzes_brett.business_logic.notification%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=schwarzes_brett%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mghGE2FDEe2Sat9fqBO4Zg" x="-282" y="4794"/>
+  </children>
+  <element xsi:nil="true"/>
+  <edges xmi:type="umlnotation:UMLConnector" xmi:id="_mg1PIGFDEe2Sat9fqBO4Zg" source="_mgf39mFDEe2Sat9fqBO4Zg" target="_mgep0GFDEe2Sat9fqBO4Zg" fontName="Sans" fontHeight="8" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1" showStereotype="Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_mg1PImFDEe2Sat9fqBO4Zg" type="KindLabel">
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_mg1PJGFDEe2Sat9fqBO4Zg" type="Stereotype"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_mg1PJmFDEe2Sat9fqBO4Zg" type="Kind"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_mg1PJWFDEe2Sat9fqBO4Zg" type="Name"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mg1PI2FDEe2Sat9fqBO4Zg" y="-247"/>
+    </children>
+    <element xmi:type="uml:Usage" href="mmi:///#jdep%5Bjsrctype%5Ename=Notification%5Bjcu%5Ename=Notification.java%5Bjpack%5Ename=de.schwarzes_brett.business_logic.notification%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=schwarzes_brett%5D%5D%5D%5D%5D%5Bjsrctype%5Ename=NotificationLevel%5Bjcu%5Ename=NotificationLevel.java%5Bjpack%5Ename=de.schwarzes_brett.business_logic.notification%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=schwarzes_brett%5D%5D%5D%5D%5D$uml.Usage"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_mg1PIWFDEe2Sat9fqBO4Zg" points="[104, 67, -3138, -3980]$[3242, 4118, 0, 71]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mhGU4GFDEe2Sat9fqBO4Zg" id="(0.9820574162679426,0.47663044360072687)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mhGU4WFDEe2Sat9fqBO4Zg" id="(0.0,0.4997869611179868)"/>
+  </edges>
+  <edges xmi:type="umlnotation:UMLConnector" xmi:id="_mg1PJ2FDEe2Sat9fqBO4Zg" source="_mgf39mFDEe2Sat9fqBO4Zg" target="_mggfBGFDEe2Sat9fqBO4Zg" fontName="Sans" fontHeight="8" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1" showStereotype="Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_mg1PKWFDEe2Sat9fqBO4Zg" type="KindLabel">
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_mg1PK2FDEe2Sat9fqBO4Zg" type="Stereotype"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_mg12MWFDEe2Sat9fqBO4Zg" type="Kind"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_mg12MGFDEe2Sat9fqBO4Zg" type="Name"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mg1PKmFDEe2Sat9fqBO4Zg" y="-247"/>
+    </children>
+    <element xmi:type="uml:Usage" href="mmi:///#jdep%5Bjsrctype%5Ename=Notification%5Bjcu%5Ename=Notification.java%5Bjpack%5Ename=de.schwarzes_brett.business_logic.notification%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=schwarzes_brett%5D%5D%5D%5D%5D%5Bjsrctype%5Ename=NotificationContext%5Bjcu%5Ename=NotificationContext.java%5Bjpack%5Ename=de.schwarzes_brett.business_logic.notification%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=schwarzes_brett%5D%5D%5D%5D%5D$uml.Usage"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_mg1PKGFDEe2Sat9fqBO4Zg" points="[104, 74, -2927, 4132]$[3031, -3987, 0, 71]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mhG78GFDEe2Sat9fqBO4Zg" id="(0.9820574162679426,0.5253005405741606)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mhG78WFDEe2Sat9fqBO4Zg" id="(0.0,0.5)"/>
+  </edges>
+  <edges xmi:type="umlnotation:UMLConnector" xmi:id="_mg12MmFDEe2Sat9fqBO4Zg" source="_mghGEmFDEe2Sat9fqBO4Zg" target="_mgf39mFDEe2Sat9fqBO4Zg" fontName="Sans" fontHeight="8" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1" showStereotype="Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_mg12NGFDEe2Sat9fqBO4Zg" type="KindLabel">
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_mg12NmFDEe2Sat9fqBO4Zg" type="Stereotype"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_mg12OGFDEe2Sat9fqBO4Zg" type="Kind"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_mg12N2FDEe2Sat9fqBO4Zg" type="Name"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mg12NWFDEe2Sat9fqBO4Zg" y="-247"/>
+    </children>
+    <element xmi:type="uml:Usage" href="mmi:///#jdep%5Bjsrctype%5Ename=NotificationProvider%5Bjcu%5Ename=NotificationProvider.java%5Bjpack%5Ename=de.schwarzes_brett.business_logic.notification%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=schwarzes_brett%5D%5D%5D%5D%5D%5Bjsrctype%5Ename=Notification%5Bjcu%5Ename=Notification.java%5Bjpack%5Ename=de.schwarzes_brett.business_logic.notification%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=schwarzes_brett%5D%5D%5D%5D%5D$uml.Usage"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_mg12M2FDEe2Sat9fqBO4Zg" points="[104, 68, -2927, -1960]$[3031, 2099, 0, 71]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mhG78mFDEe2Sat9fqBO4Zg" id="(0.98973205554469,0.48451178542377854)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mhG782FDEe2Sat9fqBO4Zg" id="(0.0,0.5000865351332641)"/>
+  </edges>
+  <edges xmi:type="umlnotation:UMLConnector" xmi:id="_mg12OWFDEe2Sat9fqBO4Zg" source="_mghGEmFDEe2Sat9fqBO4Zg" target="_mggfBGFDEe2Sat9fqBO4Zg" fontName="Sans" fontHeight="8" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1" showStereotype="Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_mg12O2FDEe2Sat9fqBO4Zg" type="KindLabel">
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_mg2dQGFDEe2Sat9fqBO4Zg" type="Stereotype"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_mg2dQmFDEe2Sat9fqBO4Zg" type="Kind"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_mg2dQWFDEe2Sat9fqBO4Zg" type="Name"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mg12PGFDEe2Sat9fqBO4Zg" y="-247"/>
+    </children>
+    <element xmi:type="uml:Usage" href="mmi:///#jdep%5Bjsrctype%5Ename=NotificationProvider%5Bjcu%5Ename=NotificationProvider.java%5Bjpack%5Ename=de.schwarzes_brett.business_logic.notification%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=schwarzes_brett%5D%5D%5D%5D%5D%5Bjsrctype%5Ename=NotificationContext%5Bjcu%5Ename=NotificationContext.java%5Bjpack%5Ename=de.schwarzes_brett.business_logic.notification%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=schwarzes_brett%5D%5D%5D%5D%5D$uml.Usage"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_mg12OmFDEe2Sat9fqBO4Zg" points="[104, -202, -11883, 3464]$[2929, -5709, -9058, -2043]$[11987, -3666, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mhHjAGFDEe2Sat9fqBO4Zg" id="(0.98973205554469,0.5038684334662366)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mhHjAWFDEe2Sat9fqBO4Zg" id="(0.0,0.5)"/>
+  </edges>
+</umlnotation:UMLDiagram>

@@ -1,0 +1,7 @@
+/* defining the main colors of the theme */
+:root {
+  --bs-primary: #e9b049;
+  --bs-primary-light: #ffc150;
+  --bs-secondary: #AD343E;
+  --bs-secondary-light: #d0404c;
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<!--Rational Software Architect Designer 9.7.1.1-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<umlnotation:UMLDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xmi:id="_qRZMIGFCEe2Sat9fqBO4Zg" type="Class" name="Klassendiagramm_backing.exception.dnx">
+  <eAnnotations xmi:id="_qRZMIWFCEe2Sat9fqBO4Zg" source="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+    <details xmi:id="_qRZMImFCEe2Sat9fqBO4Zg" key="com.ibm.xtools.activities.javaVisualizerActivity" value="1"/>
+  </eAnnotations>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_qTHqcGFCEe2Sat9fqBO4Zg" fontName="Sans" fontHeight="8" fillColor="6437515" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+    <children xmi:type="notation:DecorationNode" xmi:id="_qTIRgGFCEe2Sat9fqBO4Zg" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_qTIRgWFCEe2Sat9fqBO4Zg" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_qTIRgmFCEe2Sat9fqBO4Zg" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_qTIRg2FCEe2Sat9fqBO4Zg" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_qTI4kGFCEe2Sat9fqBO4Zg" type="Parent"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_qTI4kWFCEe2Sat9fqBO4Zg" visible="false" type="ANNOTATION_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_qTI4kmFCEe2Sat9fqBO4Zg" type="ANNOTATED_ATTRIBUTE_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_qTI4k2FCEe2Sat9fqBO4Zg" type="ANNOTATED_OPERATION_COMPARTMENT"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=MainExceptionHandler%5Bjcu%5Ename=MainExceptionHandler.java%5Bjpack%5Ename=de.schwarzes_brett.backing.exception%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=schwarzes_brett%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qTHqcWFCEe2Sat9fqBO4Zg" x="1551" y="564"/>
+  </children>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_qTI4lGFCEe2Sat9fqBO4Zg" fontName="Sans" fontHeight="8" fillColor="6437515" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+    <children xmi:type="notation:DecorationNode" xmi:id="_qTI4lmFCEe2Sat9fqBO4Zg" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_qTI4l2FCEe2Sat9fqBO4Zg" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_qTI4mGFCEe2Sat9fqBO4Zg" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_qTI4mWFCEe2Sat9fqBO4Zg" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_qTJfoGFCEe2Sat9fqBO4Zg" type="Parent"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_qTJfoWFCEe2Sat9fqBO4Zg" visible="false" type="ANNOTATION_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_qTJfomFCEe2Sat9fqBO4Zg" type="ANNOTATED_ATTRIBUTE_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_qTJfo2FCEe2Sat9fqBO4Zg" type="ANNOTATED_OPERATION_COMPARTMENT"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=Factory%5Bjsrctype%5Ename=MainExceptionHandler%5Bjcu%5Ename=MainExceptionHandler.java%5Bjpack%5Ename=de.schwarzes_brett.backing.exception%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=schwarzes_brett%5D%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qTI4lWFCEe2Sat9fqBO4Zg" x="846" y="6345"/>
+  </children>
+  <element xsi:nil="true"/>
+  <edges xmi:type="umlnotation:UMLConnector" xmi:id="_qTQNUGFCEe2Sat9fqBO4Zg" type="OwnedElement" source="_qTHqcGFCEe2Sat9fqBO4Zg" target="_qTI4lGFCEe2Sat9fqBO4Zg" fontName="Sans" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qTQNUWFCEe2Sat9fqBO4Zg" points="[70, 135, -171, -2963]$[70, 981, -171, -2117]$[311, 981, 70, -2117]$[311, 3098, 70, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qTYwMGFCEe2Sat9fqBO4Zg" id="(0.6666667278203081,0.9529058116232465)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qTYwMWFCEe2Sat9fqBO4Zg" id="(0.6666666426216945,0.0)"/>
+  </edges>
+  <edges xmi:type="umlnotation:UMLConnector" xmi:id="_qTQ0YGFCEe2Sat9fqBO4Zg" source="_qTI4lGFCEe2Sat9fqBO4Zg" target="_qTHqcGFCEe2Sat9fqBO4Zg" fontName="Sans" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_qTQ0YmFCEe2Sat9fqBO4Zg" type="KindLabel">
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_qTQ0ZGFCEe2Sat9fqBO4Zg" type="Stereotype"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_qTQ0ZmFCEe2Sat9fqBO4Zg" type="Kind"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_qTQ0ZWFCEe2Sat9fqBO4Zg" type="Name"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qTQ0Y2FCEe2Sat9fqBO4Zg" y="-247"/>
+    </children>
+    <element xmi:type="uml:Usage" href="mmi:///#jdep%5Bjsrctype%5Ename=Factory%5Bjsrctype%5Ename=MainExceptionHandler%5Bjcu%5Ename=MainExceptionHandler.java%5Bjpack%5Ename=de.schwarzes_brett.backing.exception%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=schwarzes_brett%5D%5D%5D%5D%5D%5D%5Bjsrctype%5Ename=MainExceptionHandler%5Bjcu%5Ename=MainExceptionHandler.java%5Bjpack%5Ename=de.schwarzes_brett.backing.exception%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=schwarzes_brett%5D%5D%5D%5D%5D$uml.Usage"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qTQ0YWFCEe2Sat9fqBO4Zg" points="[35, 0, -206, 3098]$[35, -2117, -206, 981]$[276, -2117, 35, 981]$[276, -2963, 35, 135]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qTYwMmFCEe2Sat9fqBO4Zg" id="(0.33333332131084725,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qTZXQGFCEe2Sat9fqBO4Zg" id="(0.33333336391015406,0.9529058116232465)"/>
+  </edges>
+</umlnotation:UMLDiagram>

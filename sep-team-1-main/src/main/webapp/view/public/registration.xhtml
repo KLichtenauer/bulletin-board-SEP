@@ -1,0 +1,176 @@
+<!-- author: michaelgruner -->
+<ui:composition template="/resources/templates/main.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <!-- Please define your page title here -->
+    <ui:define name="title">#{phrases.f_registration_title}</ui:define>
+    <ui:define name="content">
+        <p:importConstants type="de.schwarzes_brett.dto.Limits" var="limits"/>
+
+        <h:outputText value="#{phrases.f_registration_heading}" styleClass="h2"/>
+
+        <h:form id="registration_form">
+            <h:panelGrid id="registration_inputGroup" columns="3" styleClass="m-auto mt-3 mb-3 align-middle">
+
+                <!-- username -->
+                <h:outputLabel id="registration_usernameLabel" for="registration_usernameInput"
+                               value="Username: " styleClass="p-2 required"/>
+                <h:inputText id="registration_usernameInput"
+                             value="#{registrationBean.user.credentials.username}"
+                             required="true"
+                             requiredMessage="#{phrases.f_registration_requiredMessage}"
+                             styleClass="ui-inputtext">
+                    <f:validator validatorId="usernameNotExistsValidator"/>
+                </h:inputText>
+                <h:message id="registration_usernameMessage" for="registration_usernameInput" styleClass="invalid-feedback d-block"/>
+
+                <!-- firstName -->
+                <h:outputLabel id="registration_firstNameLabel" for="registration_firstNameInput"
+                               value="#{phrases.f_registration_firstName}" styleClass="p-2 required"/>
+                <h:inputText id="registration_firstNameInput"
+                             value="#{registrationBean.user.firstName}"
+                             required="true"
+                             requiredMessage="#{phrases.f_registration_requiredMessage}"
+                             validatorMessage="#{phrases.f_registration_lengthMessage} #{limits.EXTRA_SHORT_PLUS_TEXT_LENGTH}"
+                             styleClass="input-group">
+                    <f:validateLength maximum="#{limits.EXTRA_SHORT_PLUS_TEXT_LENGTH}"/>
+                </h:inputText>
+                <h:message id="registration_firstNameMessage" for="registration_firstNameInput" styleClass="invalid-feedback d-block"/>
+
+                <!-- lastName -->
+                <h:outputLabel id="registration_lastNameLabel" for="registration_lastNameInput"
+                               value="#{phrases.f_registration_lastName}" styleClass="p-2 required"/>
+                <h:inputText id="registration_lastNameInput"
+                             value="#{registrationBean.user.lastName}"
+                             required="true"
+                             requiredMessage="#{phrases.f_registration_requiredMessage}"
+                             validatorMessage="#{phrases.f_registration_lengthMessage} #{limits.EXTRA_SHORT_PLUS_TEXT_LENGTH}"
+                             styleClass="input-group">
+                    <f:validateLength maximum="#{limits.EXTRA_SHORT_PLUS_TEXT_LENGTH}"/>
+                </h:inputText>
+                <h:message id="registration_lastNameMessage" for="registration_lastNameInput" styleClass="invalid-feedback d-block"/>
+
+                <!-- street -->
+                <h:outputLabel id="registration_streetLabel" for="registration_streetInput"
+                               value="#{phrases.f_registration_street}" styleClass="p-2 required"/>
+                <h:inputText id="registration_streetInput"
+                             value="#{registrationBean.user.street}"
+                             required="true"
+                             requiredMessage="#{phrases.f_registration_requiredMessage}"
+                             validatorMessage="#{phrases.f_registration_lengthMessage} #{limits.SHORT_PLUS_TEXT_LENGTH}"
+                             styleClass="input-group">
+                    <f:validateLength maximum="#{limits.SHORT_PLUS_TEXT_LENGTH}"/>
+                </h:inputText>
+                <h:message id="registration_streetMessage" for="registration_streetInput" styleClass="invalid-feedback d-block"/>
+
+                <!-- streetNumber -->
+                <h:outputLabel id="registration_streetNumberLabel" for="registration_streetNumberInput"
+                               value="#{phrases.f_registration_streetNumber}" styleClass="p-2 required"/>
+                <h:inputText id="registration_streetNumberInput"
+                             value="#{registrationBean.user.streetNumber}"
+                             required="true"
+                             requiredMessage="#{phrases.f_registration_requiredMessage}"
+                             validatorMessage="#{phrases.f_registration_lengthMessage} #{limits.EXTRA_SHORT_TEXT_LENGTH}"
+                             styleClass="input-group">
+                    <f:validateLength maximum="#{limits.EXTRA_SHORT_TEXT_LENGTH}"/>
+                </h:inputText>
+                <h:message id="registration_streetNumberMessage" for="registration_streetNumberInput" styleClass="invalid-feedback d-block"/>
+
+                <!-- addressAddition -->
+                <h:outputLabel id="registration_addressAdditionLabel" for="registration_addressAdditionInput"
+                               value="#{phrases.f_registration_addressAddition}" styleClass="p-2"/>
+                <h:inputText id="registration_addressAdditionInput"
+                             value="#{registrationBean.user.addressAddition}"
+                             validatorMessage="#{phrases.f_registration_lengthMessage} #{limits.EXTRA_SHORT_PLUS_TEXT_LENGTH}"
+                             styleClass="input-group">
+                    <f:validateLength maximum="#{limits.EXTRA_SHORT_PLUS_TEXT_LENGTH}"/>
+                </h:inputText>
+                <h:message id="registration_addressAdditionMessage" for="registration_addressAdditionInput" styleClass="invalid-feedback d-block"/>
+
+                <!-- postalCode -->
+                <h:outputLabel id="registration_postalCodeLabel" for="registration_postalCodeInput"
+                               value="#{phrases.f_registration_postalCode}" styleClass="p-2 required"/>
+                <h:inputText id="registration_postalCodeInput"
+                             value="#{registrationBean.user.postalCode}"
+                             required="true"
+                             requiredMessage="#{phrases.f_registration_requiredMessage}"
+                             validatorMessage="#{phrases.f_registration_lengthMessage} #{limits.EXTRA_SHORT_TEXT_LENGTH}"
+                             styleClass="input-group">
+                    <f:validateLength maximum="#{limits.EXTRA_SHORT_TEXT_LENGTH}"/>
+                </h:inputText>
+                <h:message id="registration_postalCodeMessage" for="registration_postalCodeInput" styleClass="invalid-feedback d-block"/>
+
+                <!-- city -->
+                <h:outputLabel id="registration_cityLabel" for="registration_cityInput"
+                               value="#{phrases.f_registration_city}" styleClass="p-2 required"/>
+                <h:inputText id="registration_cityInput"
+                             value="#{registrationBean.user.city}"
+                             required="true"
+                             requiredMessage="#{phrases.f_registration_requiredMessage}"
+                             validatorMessage="#{phrases.f_registration_lengthMessage} #{limits.SHORT_PLUS_TEXT_LENGTH}"
+                             styleClass="input-group">
+                    <f:validateLength maximum="#{limits.SHORT_PLUS_TEXT_LENGTH}"/>
+                </h:inputText>
+                <h:message id="registration_cityMessage" for="registration_cityInput" styleClass="invalid-feedback d-block"/>
+
+                <!-- country -->
+                <h:outputLabel id="registration_countryLabel" for="registration_countryInput"
+                               value="#{phrases.f_registration_country}" styleClass="p-2 required"/>
+                <h:inputText id="registration_countryInput"
+                             value="#{registrationBean.user.country}"
+                             required="true"
+                             requiredMessage="#{phrases.f_registration_requiredMessage}"
+                             validatorMessage="#{phrases.f_registration_lengthMessage} #{limits.EXTRA_SHORT_PLUS_TEXT_LENGTH}"
+                             styleClass="input-group">
+                    <f:validateLength maximum="#{limits.EXTRA_SHORT_PLUS_TEXT_LENGTH}"/>
+                </h:inputText>
+                <h:message id="registration_countryMessage" for="registration_countryInput" styleClass="invalid-feedback d-block"/>
+
+                <!-- email -->
+                <h:outputLabel id="registration_emailLabel" for="registration_emailInput"
+                               value="#{phrases.f_registration_email}" styleClass="p-2 required"/>
+                <h:inputText id="registration_emailInput"
+                             value="#{registrationBean.user.email}"
+                             required="true"
+                             requiredMessage="#{phrases.f_registration_requiredMessage}"
+                             styleClass="input-group">
+                    <f:validator validatorId="emailSyntaxValidator"/>
+                    <f:validator validatorId="emailUniqueValidator"/>
+                </h:inputText>
+                <h:message id="registration_emailMessage" for="registration_emailInput" styleClass="invalid-feedback d-block"/>
+
+                <!-- password -->
+                <h:outputLabel id="registration_passwordLabel" for="registration_passwordInput"
+                               value="#{phrases.f_registration_password}" styleClass="p-2 required"/>
+                <h:inputSecret id="registration_passwordInput"
+                               value="#{registrationBean.user.credentials.password}"
+                               required="true"
+                               requiredMessage="#{phrases.f_registration_requiredMessage}"
+                               styleClass="ui-inputtext">
+                    <f:converter converterId="passwordConverter"/>
+                </h:inputSecret>
+                <h:message id="registration_passwordMessage" for="registration_passwordInput" styleClass="invalid-feedback d-block"/>
+
+                <!-- repeatedPassword -->
+                <h:outputLabel id="registration_repeatedPasswordLabel" for="registration_repeatedPasswordInput"
+                               value="#{phrases.f_registration_repeatedPassword}" styleClass="p-2 required"/>
+                <h:inputSecret id="registration_repeatedPasswordInput"
+                               required="true"
+                               requiredMessage="#{phrases.f_registration_requiredMessage}"
+                               styleClass="ui-inputtext">
+                    <f:validator validatorId="repeatedPasswordEqualValidator"/>
+                    <f:attribute name="passwordId" value="registration_form:registration_passwordInput"/>
+                </h:inputSecret>
+                <h:message id="registration_repeatedPasswordMessage" for="registration_repeatedPasswordInput" styleClass="invalid-feedback d-block"/>
+
+            </h:panelGrid>
+
+            <h:commandButton id="registration_submitButton" value="#{phrases.f_registration_submitButton}"
+                             action="#{registrationBean.submit()}" styleClass="btn btn-primary"/>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,23 @@
+<ui:composition template="/resources/templates/main.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:define name="title">#{phrases.f_error404_title}</ui:define>
+    <ui:define name="content">
+        <h1><h:outputLabel id="errorType" value="#{phrases.f_error404_header}"/></h1>
+        <h:outputLabel id="instructions" value="#{phrases.f_error404_subHeader}"/>
+        <br/>
+        <h:outputLabel id="errorMessage" value="#{errorBean.error.message}"/>
+        <br/>
+        <br/>
+        <h:panelGroup rendered="#{errorBean.renderError}">
+            <h:outputLabel id="exceptionMessage" value="Exception message: #{errorBean.error.exception.message}"/>
+            <br/>
+            <br/>
+            <pre class="stackTrace">
+                    <h:outputLabel id="stacktrace" escape="false" value="#{errorBean.error.stacktrace}"/>
+            </pre>
+        </h:panelGroup>
+
+    </ui:define>
+</ui:composition>

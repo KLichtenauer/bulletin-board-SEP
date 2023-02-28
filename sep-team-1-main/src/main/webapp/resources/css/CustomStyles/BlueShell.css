@@ -1,0 +1,39 @@
+/* defining the main colors of the theme */
+:root {
+  --bs-primary: #0962ea;
+  --bs-primary-light: #a7d8f5;
+  --bs-secondary: #0aa0f6;
+  --bs-secondary-light: #fffefa;
+}
+
+/* link adjustments */
+a {
+  color: var(--bs-primary);
+}
+
+/* link hover adjustments */
+a:hover {
+  color: var(--bs-primary-light);
+}
+
+/* Primary button adjustments */
+.btn-primary {
+  color: var(--bs-primary-light);
+}
+
+/* Secondary button adjustments */
+.btn-secondary {
+  color: var(--bs-dark);
+}
+
+/* Primary hover button adjustments */
+.btn-primary:hover {
+  color: var(--bs-dark);
+  background-color: var(--bs-primary-light);
+}
+
+/* Secondary hover button adjustments */
+.btn-secondary:hover {
+  color: var(--bs-dark);
+  background-color: var(--bs-secondary-light);
+}

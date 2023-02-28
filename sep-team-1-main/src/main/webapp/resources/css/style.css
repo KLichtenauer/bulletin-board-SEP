@@ -1,0 +1,226 @@
+/* grid container for the main view with a category tree */
+.grid-container-main {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 0.5fr auto 1fr;
+  grid-template-areas:
+    "header"
+    "aside"
+    "main"
+    "footer";
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bs-gray-light);
+}
+
+/* header style */
+header {
+  grid-area: header;
+  height: auto;
+  background-color: var(--bs-gray-light);
+  padding: 10px 200px 10px 200px;
+}
+
+/* main window style */
+main {
+  grid-area: main;
+  text-align: center;
+  margin: 50px 200px 50px 200px;
+}
+
+/* footer style */
+footer {
+  grid-area: footer;
+  min-height: 200px;
+  background-color: var(--bs-gray-light);
+  display: flex;
+  align-items: center;
+  padding: 50px 50px 50px 200px;
+}
+
+/* logo in the header */
+.logo {
+  margin: 20px 0 20px 20px;
+  height: 60px;
+  width: 200px;
+}
+
+/* buttons at the right side of the header */
+.menu {
+  display: grid;
+  padding: 20px;
+}
+
+/* help button in the menu */
+.help {
+  border-radius: 100%;
+}
+
+/* breadcrumb list */
+.breadcrumb {
+  border: 10px solid var(--bs-primary);
+}
+
+/* breadcrumb list element */
+.breadcrumbElement {
+  text-decoration-line: none;
+}
+
+/* breadcrumb list element */
+.breadcrumbElement::before {
+  content: "\003E";
+  margin: 0 5px 0 5px;
+}
+
+/* general styling for ALL buttons - be careful. This can change a lot, even if you don't see it. */
+.btn {
+  margin: 5px;
+}
+
+/* used as small images for ads in landing and welcome page */
+.thumbnail {
+  max-width: 60px;
+  max-height: 40px;
+  /*object-fit: cover;*/
+  margin: 5px;
+}
+
+/* adjust avatar of a user*/
+.avatar {
+  max-width: 60px;
+  max-height: 40px;
+  /*object-fit: cover;*/
+  margin: 5px;
+}
+
+/* view of any uploaded images */
+.uploadedImage {
+  width: 200px;
+  height: 200px;
+  margin: 5px;
+}
+
+.stackTrace {
+  text-align: left;
+  color: red;
+  margin: 15px;
+}
+
+/* titles of tables like in pagination */
+.tableHeader {
+  border: none;
+  font-weight: bold;
+  background-color: transparent;
+}
+
+/* remove border from category navigation */
+.ui-tree {
+  border: none;
+}
+
+/* textarea input field */
+.form-control-lg {
+  height: 200px;
+}
+
+/* labels above input fields */
+.inputLabel {
+  margin-top: 10px;
+}
+
+/* faces messages */
+.messages {
+  list-style: none;
+  color: var(--bs-red);
+}
+
+aside {
+  grid-area: aside;
+  width: 100%;
+  height: auto;
+  background: var(--bs-gray);
+  border-radius: 5px;
+
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  box-shadow: 3px 1px 5px 0px rgba(0, 0, 0, 0.75)
+}
+
+aside ul {
+  padding-inline-start: 0;
+}
+
+aside ul li {
+  list-style: none;
+  font-size: 18px;
+  padding: 20px 0;
+  cursor: pointer;
+}
+
+aside ul li .fas {
+  width: 50px;
+}
+
+.aside-wrapper {
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.logo-text {
+  font-size: 32px;
+  position: relative;
+}
+
+.sidebar-toggle {
+  position: absolute;
+  top: 5px;
+  left: 405px;
+  background: yellow;
+  padding: 4px 11px;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Adds red star to required inputs */
+.required:after {
+  content: " *";
+  color: var(--bs-red);
+}
+
+/* formatting settings.xhtml */
+.settings_form {
+  width: 80%;
+}
+
+/* Used for big text input areas */
+.textAreaBig {
+  height: 200px;
+}
+
+/* Used for the first column in the data table for the ad page */
+.leftColumn {
+  width: 250px;
+  pointer-events: none;
+  text-decoration: none;
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: left;
+  color: #474747;
+}
+
+/* Used for the second column in the data table for the ad page */
+.rightColumn {
+  width: 500px;
+  margin-left: 5px;
+  text-align: left;
+}

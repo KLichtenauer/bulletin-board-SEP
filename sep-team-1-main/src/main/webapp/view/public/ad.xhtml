@@ -1,0 +1,147 @@
+<!-- Author: Jonas Elsper -->
+<ui:composition template="/resources/templates/main.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:metadata>
+        <!-- Set viewparams. Viewparam represents ad id. -->
+        <f:viewParam id="ad_param" name="id" value="#{adBean.ad.id}">
+            <f:validator validatorId="adIDValidator"/>
+            <f:converter converterId="adIDConverter"/>
+        </f:viewParam>
+        <!-- Define view action. Action gets triggered when page gets loaded. -->
+        <f:viewAction id="ad_action" action="#{adBean.loadAd()}"/>
+    </f:metadata>
+    <!-- Page Title -->
+    <ui:define name="title">#{phrases.f_ad_pageName}</ui:define>
+    <ui:define name="content">
+        <h:panelGrid columns="2" columnClasses="leftColumn,rightColumn" styleClass="m-auto mt-3 align-middle">
+            <!-- Ad Title -->
+            <h:outputText value="#{phrases.f_ad_title}: " styleClass="p-2"/>
+            <h:outputText id="ad_title" value="#{adBean.ad.title}" styleClass="p"/>
+            <!-- Ad Description -->
+            <h:outputText value="#{phrases.f_ad_description}: " styleClass="p-2"/>
+            <h:outputText id="ad_description" value="#{adBean.ad.description}" styleClass="p"/>
+            <!-- Ad price -->
+            <h:outputText value="#{phrases.f_ad_price}: " styleClass="p-2"/>
+            <h:panelGrid columns="2">
+                <h:outputText id="ad_price" value="#{adBean.ad.price}"
+                              styleClass="p">
+                    <f:converter converterId="priceConverter"/>
+                </h:outputText>
+                <h:outputText rendered="#{!adBean.ad.price.hasPrice and !adBean.ad.price.basisOfNegotiation}" value="#{phrases.f_ad_noPrice}"/>
+            </h:panelGrid>
+            <!-- Release period. That means time of creation and time of termination of ad. -->
+            <h:outputText value="#{phrases.f_editAd_releaseDate_label} " styleClass="h5"/>
+            <h:outputText id="ad_releaseDate" value="#{adBean.ad.release}" styleClass="p"/>
+            <h:outputText value="#{phrases.f_editAd_endDate_label} " styleClass="h5" rendered="#{adBean.ad.end != null}"/>
+            <h:outputText id="ad_endDate" value="#{adBean.ad.end}" styleClass="p" rendered="#{adBean.ad.end != null}"/>
+            <!-- Location of the ad. Gets set in the contact information of the ad. -->
+            <h:outputText value="#{phrases.f_ad_location}: " styleClass="p-2"/>
+            <h:outputText id="ad_location" value="#{adBean.ad.getLocation()}" styleClass="p"/>
+        </h:panelGrid>
+        <br/>
+        <!-- Productimages of the ad. -->
+        <h:outputText value="#{phrases.f_ad_productImages}: " styleClass="h3"/>
+        <br/>
+        <h:panelGrid columns="1" styleClass="m-auto mt-3 align-middle">
+            <ui:repeat id="ad_images" value="#{adBean.ad.images}" var="image">
+                <h:graphicImage id="ad_image" value="/image?id=#{image.id}" styleClass="uploadedImage" alt="ad image"/>
+            </ui:repeat>
+        </h:panelGrid>
+        <br/>
+        <h:panelGrid columns="2" columnClasses="leftColumn,rightColumn" styleClass="m-auto mt-3 align-middle">
+            <!-- Username of creator of the ad. -->
+            <h:outputText value="#{phrases.f_ad_username}: " rendered="#{adBean.loggedInR()}" styleClass="h5 text-start"/>
+            <h:outputText id="ad_username" value="#{adBean.ad.creator.credentials.username}" rendered="#{adBean.loggedInR()}" styleClass="p"/>
+            <!-- Username and avatar image of creator of the ad. -->
+            <h:outputText value="#{phrases.f_ad_avatar}: " rendered="#{adBean.loggedInR()}" styleClass="h5 text-start"/>
+            <h:graphicImage id="ad_avatar" rendered="#{adBean.loggedInR()}" styleClass="avatar"
+                            value="#{adBean.generateAvatarId(adBean.ad.creator.avatar)}" alt="avatar"/>
+            <!-- Amount of follower, who follow the ad creator. -->
+            <h:outputText value="#{phrases.f_ad_follower}: " rendered="#{adBean.loggedInR()}" styleClass="h5"/>
+            <h:outputText id="adfollowNumber" rendered="#{adBean.loggedInR()}" value="#{adBean.getNumberOfFollower()}" styleClass="p"/>
+            <!-- Rating of the creator of the ad. -->
+            <h:outputText value="#{phrases.f_ad_rating}: " rendered="#{adBean.loggedInR()}" styleClass="h5"/>
+            <h:outputText id="ad_rating" value="#{adBean.avgRating}" rendered="#{adBean.loggedInR()}" styleClass="p"/>
+        </h:panelGrid>
+        <br/>
+        <!-- Contact data of creator. Set for the ad. -->
+        <h:outputText value="#{phrases.f_ad_contactData}: " rendered="#{adBean.loggedInR()}" styleClass="h4"/>
+        <h:panelGrid columns="2" columnClasses="leftColumn,rightColumn" styleClass="m-auto mt-3 align-middle">
+            <h:outputText value="#{phrases.f_ad_name}: " rendered="#{adBean.loggedInR()}" styleClass="h5"/>
+            <h:outputText id="ad_contactInformation_name" value="#{adBean.name}" rendered="#{adBean.loggedInR()}" styleClass="p"/>
+            <h:outputText value="#{phrases.f_ad_email}: " rendered="#{adBean.loggedInR()}" styleClass="h5"/>
+            <h:outputText id="ad_contactInformation_email" value="#{adBean.ad.publicData.email}" rendered="#{adBean.loggedInR()}" styleClass="p"/>
+            <h:outputText value="#{phrases.f_ad_phone}: " rendered="#{adBean.loggedInR()}" styleClass="h5"/>
+            <h:outputText id="ad_contactInformation_phone" value="#{adBean.ad.publicData.phone}" rendered="#{adBean.loggedInR()}" styleClass="p"/>
+            <h:outputText value="#{phrases.f_ad_address}: " rendered="#{adBean.loggedInR()}" styleClass="h5"/>
+            <h:outputText id="ad_contactInformation_address" value="#{adBean.address}" rendered="#{adBean.loggedInR()}" styleClass="p"/>
+        </h:panelGrid>
+        <!-- Buttons for rating, messaging and following -->
+        <h:form id="ad_rateForm">
+            <h:commandButton rendered="#{adBean.isAllowedToRate()}" id="ad_rateButton" action="#{adBean.rateUser()}" styleClass="btn btn-primary"
+                             value="#{phrases.f_ad_rateCreator}"/>
+        </h:form>
+        <h:form id="ad_messageForm">
+            <h:commandButton rendered="#{adBean.isMessageButtonVisible()}" id="ad_messageButton" action="#{adBean.messageUser()}"
+                             styleClass="btn btn-primary" value="#{phrases.f_ad_writeMessage}"/>
+        </h:form>
+        <h:form id="ad_followForm">
+            <h:commandButton rendered="#{adBean.isAllowedToFollow()}" id="ad_followButton" action="#{adBean.follow()}"
+                             styleClass="btn btn-primary" value="#{phrases.f_ad_followAdOrUser}"/>
+        </h:form>
+        <br/>
+        <!-- Messsages -->
+        <h:outputText value="#{phrases.f_ad_messages}: " rendered="#{adBean.loggedInR()}" styleClass="h3"/>
+        <br/>
+        <br/>
+        <h:dataTable id="ad_messageTable" rendered="#{adBean.loggedInR()}" value="#{adBean.ad.messages}" var="message" styleClass="table">
+            <h:column scope="col">
+                <f:facet name="header"> #{phrases.f_ad_username} </f:facet>
+                <h:outputText rendered="#{adBean.isAnonymousOrOwn(message.messageId)}" id="messageEntry_username"
+                              value="#{message.sender.credentials.username}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">#{phrases.f_ad_messageContent}</f:facet>
+                <h:outputText id="messageEntry_content" value="#{message.content}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">#{phrases.f_ad_changeVisibility}</f:facet>
+                <h:form id="ad_changeVisibilityForm">
+                    <h:commandButton rendered="#{adBean.ownOrAdminR(message.messageId)}" id="messageEntry_changeButton"
+                                     action="#{adBean.changeMessageVisibility(message)}" styleClass="btn btn-primary"
+                                     value="#{phrases.f_ad_edit}"/>
+                </h:form>
+            </h:column>
+            <h:column>
+                <f:facet name="header">#{phrases.f_ad_deleteMessage}</f:facet>
+                <h:form id="ad_deleteMessageForm">
+                    <h:commandButton rendered="#{adBean.ownOrAdminR(message.messageId)}" id="messageEntry_deleteButton"
+                                     action="#{adBean.deleteMessage(message.messageId)}" styleClass="btn btn-secondary"
+                                     value="#{phrases.f_ad_deleteMessage}"/>
+                </h:form>
+            </h:column>
+            <h:column>
+                <f:facet name="header">#{phrases.f_ad_answerMessage}</f:facet>
+                <h:form id="ad_answerMessageForm">
+                    <h:commandButton rendered="#{adBean.isAllowedToAnswer(message.messageId)}" id="messageEntry_answerButton"
+                                     action="#{adBean.answerMessage(message)}" styleClass="btn btn-primary"
+                                     value="#{phrases.f_ad_answer}"/>
+                </h:form>
+            </h:column>
+        </h:dataTable>
+
+        <script>
+            replaceDate('ad_releaseDate');
+            replaceDate('ad_endDate');
+
+            function replaceDate(id) {
+                let strDate = document.getElementById(id).innerHTML;
+                let d = new Date(strDate.replace('[UTC]', ''));
+                document.getElementById(id).innerHTML = d.toLocaleString();
+            }
+        </script>
+        <!-- Your code ends here  -->
+    </ui:define>
+</ui:composition>

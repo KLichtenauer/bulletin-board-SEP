@@ -1,0 +1,57 @@
+<!-- Author: Tim-Florian Feulner -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/resources/templates/main.xhtml">
+
+    <f:metadata>
+        <f:viewAction action="/view/user/welcome" if="#{userSession.loggedIn}"/>
+    </f:metadata>
+
+    <ui:define name="title">
+        <h:outputText value="#{phrases.f_login_heading}"/>
+    </ui:define>
+    <ui:define name="content">
+        <p:importConstants type="de.schwarzes_brett.dto.Limits" var="limits"/>
+
+        <h:outputText value="#{phrases.f_login_heading}" styleClass="h2"/>
+
+        <h:form id="login">
+            <h:panelGrid columns="3" styleClass="m-auto mt-3 align-middle">
+                <h:outputLabel value="#{phrases.f_login_username_label}" for="username" styleClass="p-2 required"/>
+                <h:inputText id="username" value="#{loginBean.credentials.username}" validatorMessage="#{phrases.f_login_username_too_long}"
+                             required="true" requiredMessage="#{phrases.f_login_no_username}" styleClass="form-control">
+                    <f:validateLength maximum="#{limits.MEDIUM_TEXT_MAX_LENGTH}"/>
+                </h:inputText>
+                <h:message for="username" styleClass="ui-message-error"/>
+
+                <h:outputLabel value="#{phrases.f_login_password_label}" for="password" styleClass="p-2 required"/>
+                <h:inputSecret id="password" value="#{loginBean.credentials.password}"
+                               required="true" requiredMessage="#{phrases.f_login_no_password}" styleClass="form-control">
+                    <f:converter converterId="passwordConverter"/>
+                    <f:attribute name="usernameValue" value="login:username"/>
+                </h:inputSecret>
+                <h:message for="password" styleClass="ui-message-error"/>
+            </h:panelGrid>
+
+            <h:panelGrid columns="1" styleClass="m-auto mt-2 align-middle">
+                <h:link id="forgotPasswordLink" value="#{phrases.f_login_password_forgotten}" outcome="/view/public/resetPassword"/>
+
+                <h:commandButton id="loginButton" value="#{phrases.f_login_button}" action="#{loginBean.login()}"
+                                 styleClass="btn btn-primary mt-4"/>
+            </h:panelGrid>
+
+            <!-- Contains the time zone of the user. -->
+            <h:inputHidden id="timeZone" value="#{loginBean.timezone}"/>
+        </h:form>
+
+        <!-- Necessary for retrieving the time zone from the browser. -->
+        <script>
+            document.getElementById("login:timeZone").value = new Date().getTimezoneOffset().toString();
+        </script>
+
+    </ui:define>
+</ui:composition>

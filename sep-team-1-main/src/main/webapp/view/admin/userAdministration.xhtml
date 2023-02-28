@@ -1,0 +1,64 @@
+<ui:composition template="/resources/templates/main.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:comp="jakarta.faces.composite/components">
+
+    <!-- Please define your page title here -->
+    <ui:define name="title">#{phrases.f_userAdministration_pageTitle}</ui:define>
+    <ui:define name="content">
+        <h:form id="userAdministration_form">
+            <h:panelGrid id="userAdministration" styleClass="container">
+
+                <h:commandButton id="createUser"
+                                 value="#{phrases.f_userAdministration_createUser}"
+                                 action="#{userAdministrationBean.newUser()}"
+                                 styleClass="btn btn-primary"/>
+
+                <comp:pagination id="userAdministration_pagination" backingBean="#{userAdministrationBean}"
+                                 adPagination="false">
+
+
+                    <h:column scope="col">
+                        <f:facet name="header">
+                            <comp:sortableHeader title="#{phrases.f_userAdministration_username}"
+                                                 sortBy="#{phrases.header_name_username}"
+                                                 backingBean="#{userAdministrationBean}"/>
+                        </f:facet>
+                        <h:outputText value="#{element.credentials.username}"/>
+                    </h:column>
+
+
+                    <h:column scope="col">
+                        <f:facet name="header">
+                            <comp:sortableHeader title="#{phrases.f_userAdministration_name}"
+                                                 sortBy="#{phrases.header_name_name}"
+                                                 backingBean="#{userAdministrationBean}"/>
+                        </f:facet>
+                        <h:outputText value="#{element.lastName} #{element.firstName}"/>
+                    </h:column>
+
+                    <h:column scope="col">
+                        <f:facet name="header">
+                            <comp:sortableHeader title="#{phrases.f_userAdministration_email}"
+                                                 sortBy="#{phrases.header_name_email}"
+                                                 backingBean="#{userAdministrationBean}"/>
+                        </f:facet>
+                        <h:outputText value="#{element.email}"/>
+                    </h:column>
+
+
+                    <h:column scope="col">
+                        <h:commandButton id="userAdministration_editButton"
+                                         action="#{userAdministrationBean.goToUserProfile(element)}"
+                                         styleClass="btn btn-primary"
+                                         value="#{phrases.f_userAdminitration_editButton}"/>
+                    </h:column>
+
+
+                </comp:pagination>
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>

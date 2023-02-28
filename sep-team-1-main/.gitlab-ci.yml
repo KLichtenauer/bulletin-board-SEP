@@ -1,0 +1,157 @@
+# Author: Tim-Florian Feulner
+
+# Use custom docker image as base image
+image: rederror/sep2022:def-1.0
+
+# Pipeline stages
+stages:
+    - build
+    - lint
+    - test
+    - doc
+    - package
+
+# Cache the Maven dependency repository to speed up builds
+default:
+    cache:
+        paths:
+            - /home/test/.m2/repository
+
+# Set Maven's local dependency repository
+variables:
+    MAVEN_OPTS: "-Dmaven.repo.local=/home/test/.m2/repository"
+
+# A build target for compilation
+build:
+    stage: build
+    needs: []
+    script:
+        - scripts/build.sh
+    artifacts:
+        paths:
+            - .m2/
+            - target
+        expire_in: 3 hrs
+
+# A target for mega-linter
+mega-linter:
+    stage: lint
+    needs: []
+    image: oxsecurity/megalinter:v6.12.0
+    script: ["true"]
+    variables:
+        DEFAULT_WORKSPACE: $CI_PROJECT_DIR
+    artifacts:
+        when: always
+        paths:
+            - report
+        expire_in: 1 week
+
+# A target for spotbugs
+spotbugs:
+    stage: lint
+    needs: []
+    script:
+        - scripts/spotbugs.sh
+
+# A custom linter for this project
+custom-linter:
+    stage: lint
+    needs: []
+    script:
+        - scripts/linting/single_use_daos.sh
+
+# A target for running integration tests
+integration-test:
+    stage: test
+    needs:
+        - build
+    coverage: "/Total.*?([0-9]{1,3})%/"
+    script:
+        - scripts/integration_tests.sh
+    artifacts:
+        when: always
+        reports:
+            junit:
+                - target/failsafe-reports/TEST-*.xml
+        expire_in: 1 week
+
+# A target for running system tests with chrome
+system-test-chrome:
+    image: rederror/sep2022:st-1.0.2
+    stage: test
+    needs:
+        - build
+    coverage: "/Total.*?([0-9]{1,3})%/"
+    script:
+        - scripts/system_tests_chrome.sh
+    artifacts:
+        when: always
+        paths:
+            - target/tomcat.log
+        reports:
+            junit:
+                - target/failsafe-reports/TEST-*.xml
+        expire_in: 1 day
+
+# A target for running system tests
+system-test-firefox:
+    image: rederror/sep2022:st-1.0.2
+    stage: test
+    needs:
+        - build
+    coverage: "/Total.*?([0-9]{1,3})%/"
+    script:
+        - scripts/system_tests_firefox.sh
+    artifacts:
+        when: always
+        paths:
+            - target/tomcat.log
+        reports:
+            junit:
+                - target/failsafe-reports/TEST-*.xml
+        expire_in: 1 day
+
+# A target for running system tests
+system-test-edge:
+    image: rederror/sep2022:st-1.0.2
+    stage: test
+    needs:
+        - build
+    coverage: "/Total.*?([0-9]{1,3})%/"
+    script:
+        - scripts/system_tests_edge.sh
+    artifacts:
+        when: always
+        paths:
+            - target/tomcat.log
+        reports:
+            junit:
+                - target/failsafe-reports/TEST-*.xml
+        expire_in: 1 day
+
+# A target for building the WAR archive
+package:
+    stage: package
+    needs:
+        - build
+    script:
+        - scripts/package.sh
+    artifacts:
+        paths:
+            - target/*.war
+            - target/*-maven-project.zip
+        expire_in: 1 week
+    rules: [if: $CI_COMMIT_TAG, if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH]
+
+# A target for generating the javadoc
+javadoc:
+    stage: doc
+    needs: []
+    script:
+        - scripts/javadoc.sh
+    artifacts:
+        when: always
+        paths:
+            - target/site/apidocs/
+        expire_in: 1 week

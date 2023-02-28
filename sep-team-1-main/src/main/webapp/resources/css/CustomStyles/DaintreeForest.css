@@ -1,0 +1,17 @@
+/* defining the main colors of the theme */
+:root {
+  --bs-primary: #3a7563;
+  --bs-primary-light: #59a985;
+  --bs-secondary: #392f2f;
+  --bs-secondary-light: #e6d3a7
+}
+
+/* Primary button adjustments */
+.btn-primary {
+  color: var(--bs-light);
+}
+
+/* Primary button hover adjustments */
+.btn-primary:hover {
+  color: var(--bs-light);
+}
